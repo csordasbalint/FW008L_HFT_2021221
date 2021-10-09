@@ -5,6 +5,20 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="DataBase1.mdf" />
+    <None Remove="DataBase1_log.ldf" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="DataBase1.mdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="DataBase1_log.ldf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\FW008L_HFT_2021221.Models\FW008L_HFT_2021221.Models.csproj" />
   </ItemGroup>
 
