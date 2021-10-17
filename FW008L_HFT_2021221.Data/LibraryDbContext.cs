@@ -36,9 +36,15 @@ namespace FW008L_HFT_2021221.Data
                 entity
                 .HasOne(book => book.Writer)
                 .WithMany(writer => writer.Books)
-                .HasForeignKey(car => car.BrandId)
+                .HasForeignKey(book => book.Writer_Id)
                 .OnDelete(DeleteBehavior.Restrict);
             });
+
+            Writer testW = new Writer() { Writer_Id = 1, Name = "bélateszt", Age = 55, Nationality = "hungarian"};
+            Person testP = new Person() { Person_Id = 1, Name = "pálteszt", Age = 51, Nationality = "hungarian" };
+            Book testB = new Book() { Book_Id = 1, Title = "test", Published=1995,Writer_Id=testW.Writer_Id,Person_Id=testP.Person_Id};
+            
+
 
             //Brand bmw = new Brand() { Id = 1, Name = "BMW" };
             //Brand citroen = new Brand() { Id = 2, Name = "Citroen" };
@@ -53,6 +59,10 @@ namespace FW008L_HFT_2021221.Data
 
             //modelBuilder.Entity<Brand>().HasData(bmw, citroen, audi);
             //modelBuilder.Entity<Car>().HasData(bmw1, bmw2, citroen1, citroen2, audi1, audi2);
+
+            modelBuilder.Entity<Writer>().HasData(testW);
+            modelBuilder.Entity<Book>().HasData(testB);
+            modelBuilder.Entity<Person>().HasData(testP);
         }
 
 

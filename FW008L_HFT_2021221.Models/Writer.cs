@@ -8,11 +8,13 @@ using System.Threading.Tasks;
 
 namespace FW008L_HFT_2021221.Models
 {
+    [Table("Writers")]
     public class Writer
     {
         [Key]
         public int Writer_Id { get; set; }
 
+        [Required]
         public string Name { get; set; }
 
         public int Age { get; set; }

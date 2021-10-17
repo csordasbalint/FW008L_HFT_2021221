@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace FW008L_HFT_2021221.Models
 {
+    [Table("Books")]
     public class Book
     {
         [Key]
@@ -22,6 +23,13 @@ namespace FW008L_HFT_2021221.Models
 
         [ForeignKey(nameof(Writer))]
         public int Writer_Id { get; set; }
+
+
+        [NotMapped]
+        public virtual Person Person { get; set; }
+
+        [ForeignKey(nameof(Person))]
+        public int Person_Id { get; set; }
 
     }
 }
