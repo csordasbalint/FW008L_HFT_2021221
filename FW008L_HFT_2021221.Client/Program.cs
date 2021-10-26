@@ -1,4 +1,6 @@
-﻿using System;
+﻿using FW008L_HFT_2021221.Data; //IMPORTANT TO DELETE
+using System;
+using System.Linq;
 
 namespace FW008L_HFT_2021221.Client
 {
@@ -6,7 +8,13 @@ namespace FW008L_HFT_2021221.Client
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            LibraryDbContext db = new LibraryDbContext();
+
+            var test = db.Writers.ToList();
+
+
+            ;
+            
         }
     }
 }

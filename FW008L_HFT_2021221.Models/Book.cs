@@ -13,10 +13,15 @@ namespace FW008L_HFT_2021221.Models
     {
         [Key]
         public int Book_Id { get; set; }
-
+        
+        [Required]
+        [MaxLength(50)]
         public string Title { get; set; }
 
         public int Published { get; set; }
+
+        public string Genre { get; set; }
+
 
         [NotMapped]
         public virtual Writer Writer { get; set; }

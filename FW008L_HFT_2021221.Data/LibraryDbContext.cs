@@ -38,13 +38,44 @@ namespace FW008L_HFT_2021221.Data
                 .WithMany(writer => writer.Books)
                 .HasForeignKey(book => book.Writer_Id)
                 .OnDelete(DeleteBehavior.Restrict);
+
+                entity
+               .HasOne(book => book.Person)
+               .WithMany(person => person.Books)
+               .HasForeignKey(book => book.Person_Id)
+               .OnDelete(DeleteBehavior.Restrict);
             });
 
-            Writer testW = new Writer() { Writer_Id = 1, Name = "bélateszt", Age = 55, Nationality = "hungarian"};
-            Person testP = new Person() { Person_Id = 1, Name = "pálteszt", Age = 51, Nationality = "hungarian" };
-            Book testB = new Book() { Book_Id = 1, Title = "test", Published=1995,Writer_Id=testW.Writer_Id,Person_Id=testP.Person_Id};
-            
 
+            Person testP = new Person() { Person_Id = 1, Name = "pálteszt", Age = 51, Nationality = "hungarian" };
+
+
+            Writer eddChina = new Writer() { Writer_Id = 1, Name = "Edd China", Age = 50, Nationality = "English"};
+            Writer georgeOrwell = new Writer() { Writer_Id = 2, Name = "George Orwell", Age = 46, Nationality = "Indian" };
+            Writer ernestHemingway = new Writer() { Writer_Id = 3, Name = "Ernest Hemingway", Age = 61, Nationality = "American" };
+            Writer jkRowling = new Writer() { Writer_Id = 4, Name = "J. K. Rowling", Age = 56, Nationality = "English" };
+            Writer georgeRRMartin = new Writer() { Writer_Id = 5, Name = "George R. R. Martin", Age = 73, Nationality = "American" };
+            Writer agathaChristie = new Writer() { Writer_Id = 6, Name = "Agatha Christie", Age = 85, Nationality = "English" };
+            Writer jrrTolkien = new Writer() { Writer_Id = 7, Name = "J. R. R. Tolkien", Age = 81, Nationality = "English" };
+            Writer molnarFerenc = new Writer() { Writer_Id = 8, Name = "Molnár Ferenc", Age = 74, Nationality = "Hungarian" };
+            Writer moriczZsigmond = new Writer() { Writer_Id = 9, Name = "Móricz Zsigmond", Age = 63, Nationality = "Hungarian" };
+            Writer jokaiMor = new Writer() { Writer_Id = 10, Name = "Jókai Mór", Age = 79, Nationality = "Hungarian" };
+            Writer mikszathKalman = new Writer() { Writer_Id = 11, Name = "Mikszáth Kálmán", Age = 63, Nationality = "Hungarian" };
+            Writer gunterGrass = new Writer() { Writer_Id = 12, Name = "Günter Grass", Age = 87, Nationality = "German" };
+            Writer erichKastner = new Writer() { Writer_Id = 13, Name = "Erich Kästner", Age = 75, Nationality = "German" };  //zwei lotti ja
+            Writer franzKafka = new Writer() { Writer_Id = 14, Name = "Franz Kafka", Age = 40, Nationality = "Czech" };
+            Writer jamesJoyce = new Writer() { Writer_Id = 15, Name = "James Joyce", Age = 58, Nationality = "Irish" };
+            Writer levNyTolsztoj = new Writer() { Writer_Id = 16, Name = "Lev Ny. Tolsztoj", Age = 82, Nationality = "Russian" };
+            Writer alekszandrPuskin = new Writer() { Writer_Id = 17, Name = "Alekszandr Puskin", Age = 37, Nationality = "Russian" };
+            Writer victorHugo = new Writer() { Writer_Id = 18, Name = "Victor Hugo", Age = 83, Nationality = "French" };
+            Writer antonPCsehov = new Writer() { Writer_Id = 19, Name = "Anton Pavlovics Csehov", Age = 44, Nationality = "Russian" };
+
+           
+
+
+            Book fisrtbook = new Book() { Book_Id = 1, Title = "Grease Junkie", Published=2015, Genre="Autobiography", Writer_Id=eddChina.Writer_Id, Person_Id=testP.Person_Id};
+            
+            
 
             //Brand bmw = new Brand() { Id = 1, Name = "BMW" };
             //Brand citroen = new Brand() { Id = 2, Name = "Citroen" };
@@ -60,8 +91,11 @@ namespace FW008L_HFT_2021221.Data
             //modelBuilder.Entity<Brand>().HasData(bmw, citroen, audi);
             //modelBuilder.Entity<Car>().HasData(bmw1, bmw2, citroen1, citroen2, audi1, audi2);
 
-            modelBuilder.Entity<Writer>().HasData(testW);
-            modelBuilder.Entity<Book>().HasData(testB);
+            modelBuilder.Entity<Writer>().HasData(eddChina,georgeOrwell, ernestHemingway, jkRowling, georgeRRMartin,
+            agathaChristie, jrrTolkien, molnarFerenc, moriczZsigmond, jokaiMor, mikszathKalman, gunterGrass, 
+            erichKastner, franzKafka, jamesJoyce, levNyTolsztoj, alekszandrPuskin, victorHugo, antonPCsehov);
+
+            modelBuilder.Entity<Book>().HasData(fisrtbook);
             modelBuilder.Entity<Person>().HasData(testP);
         }
 
