@@ -49,7 +49,7 @@ namespace FW008L_HFT_2021221.Data
 
             Person testP = new Person() { Person_Id = 1, Name = "pálteszt", Age = 51, Nationality = "hungarian" };
 
-
+            #region writers
             Writer eddChina = new Writer() { Writer_Id = 1, Name = "Edd China", Age = 50, Nationality = "English"};
             Writer georgeOrwell = new Writer() { Writer_Id = 2, Name = "George Orwell", Age = 46, Nationality = "Indian" };
             Writer ernestHemingway = new Writer() { Writer_Id = 3, Name = "Ernest Hemingway", Age = 61, Nationality = "American" };
@@ -69,33 +69,65 @@ namespace FW008L_HFT_2021221.Data
             Writer alekszandrPuskin = new Writer() { Writer_Id = 17, Name = "Alekszandr Puskin", Age = 37, Nationality = "Russian" };
             Writer victorHugo = new Writer() { Writer_Id = 18, Name = "Victor Hugo", Age = 83, Nationality = "French" };
             Writer antonPCsehov = new Writer() { Writer_Id = 19, Name = "Anton Pavlovics Csehov", Age = 44, Nationality = "Russian" };
+            #endregion writers
 
-           
+
+            #region books
+            Book edd1 = new Book() { Book_Id = 1, Title = "Grease Junkie", Published = 2015, Genre = "Autobiography", Writer_Id = eddChina.Writer_Id, Person_Id = testP.Person_Id };
+
+            Book george1 = new Book() { Book_Id = 2, Title = "1984", Published = 1949, Genre = "Political novel", Writer_Id = georgeOrwell.Writer_Id, Person_Id = testP.Person_Id };
+            Book george2 = new Book() { Book_Id = 3, Title = "Animal Farm: A Fairy Story", Published = 1945, Genre = "Satire", Writer_Id = georgeOrwell.Writer_Id, Person_Id = testP.Person_Id };
+            Book george3 = new Book() { Book_Id = 4, Title = "Down and Out in Paris and London", Published = 1933, Genre = "Memoir", Writer_Id = georgeOrwell.Writer_Id, Person_Id = testP.Person_Id };
+
+            Book ernest1 = new Book() { Book_Id = 5, Title = "In Our Time", Published = 1925, Genre = "Short story collection", Writer_Id = ernestHemingway.Writer_Id, Person_Id = testP.Person_Id };
+            Book ernest2 = new Book() { Book_Id = 6, Title = "The Sun Also Rises", Published = 1926, Genre = "Novel", Writer_Id = ernestHemingway.Writer_Id, Person_Id = testP.Person_Id };
+            Book ernest3 = new Book() { Book_Id = 7, Title = "A Farewell to Arms", Published = 1929, Genre = "Realism", Writer_Id = ernestHemingway.Writer_Id, Person_Id = testP.Person_Id };
+            Book ernest4 = new Book() { Book_Id = 8, Title = "The Old Man and the Sea", Published = 1952, Genre = "Literary Fiction", Writer_Id = ernestHemingway.Writer_Id, Person_Id = testP.Person_Id };
+
+            Book jkRowling1 = new Book() { Book_Id = 9, Title = "Fantastic Beasts & Where to Find Them", Published = 2001, Genre = "Fantasy", Writer_Id = jkRowling.Writer_Id, Person_Id = testP.Person_Id };
+            Book jkRowling2 = new Book() { Book_Id = 10, Title = "Harry Potter and the Philosopher’s Stone", Published = 1997, Genre = "Fantasy", Writer_Id = jkRowling.Writer_Id, Person_Id = testP.Person_Id };
+            Book jkRowling3 = new Book() { Book_Id = 11, Title = "Harry Potter and the Chamber of Secrets", Published = 1998, Genre = "Fantasy", Writer_Id = jkRowling.Writer_Id, Person_Id = testP.Person_Id };
+            Book jkRowling4 = new Book() { Book_Id = 12, Title = "Harry Potter and the Prisoner of Azkaban", Published = 1999, Genre = "Fantasy", Writer_Id = jkRowling.Writer_Id, Person_Id = testP.Person_Id };
+            Book jkRowling5 = new Book() { Book_Id = 13, Title = "Harry Potter and the Goblet of Fire", Published = 2000, Genre = "Fantasy", Writer_Id = jkRowling.Writer_Id, Person_Id = testP.Person_Id };
+            Book jkRowling6 = new Book() { Book_Id = 14, Title = "Harry Potter and the Order of the Phoenix", Published = 2003, Genre = "Fantasy", Writer_Id = jkRowling.Writer_Id, Person_Id = testP.Person_Id };
+            Book jkRowling7 = new Book() { Book_Id = 15, Title = "Harry Potter and the Half-Blood Prince", Published = 2005, Genre = "Fantasy", Writer_Id = jkRowling.Writer_Id, Person_Id = testP.Person_Id };
+            Book jkRowling8 = new Book() { Book_Id = 16, Title = "Harry Potter and the Deathly Hallows", Published = 2007, Genre = "Fantasy", Writer_Id = jkRowling.Writer_Id, Person_Id = testP.Person_Id };
+
+            Book georgeRR1 = new Book() { Book_Id = 17, Title = "Game of Thrones", Published = 1996, Genre = "Fantasy", Writer_Id = georgeRRMartin.Writer_Id, Person_Id = testP.Person_Id };
+            Book georgeRR2 = new Book() { Book_Id = 18, Title = "Clash of Kings", Published = 1998, Genre = "Fantasy", Writer_Id = georgeRRMartin.Writer_Id, Person_Id = testP.Person_Id };
+            Book georgeRR3 = new Book() { Book_Id = 19, Title = "Storm of Swords", Published = 2000, Genre = "Fantasy", Writer_Id = georgeRRMartin.Writer_Id, Person_Id = testP.Person_Id };
+            Book georgeRR4 = new Book() { Book_Id = 20, Title = "Feast for Crows", Published = 2005, Genre = "Fantasy", Writer_Id = georgeRRMartin.Writer_Id, Person_Id = testP.Person_Id };
+            Book georgeRR5 = new Book() { Book_Id = 21, Title = "Dance with Dragons", Published = 2011, Genre = "Fantasy", Writer_Id = georgeRRMartin.Writer_Id, Person_Id = testP.Person_Id };
+
+            Book agatha1 = new Book() { Book_Id = 22, Title = "Murder on the Orient Express", Published = 1934, Genre = "Crime novel", Writer_Id = agathaChristie.Writer_Id, Person_Id = testP.Person_Id };
+            Book agatha2 = new Book() { Book_Id = 23, Title = "Sad Cypress", Published = 1940, Genre = "Crime novel", Writer_Id = agathaChristie.Writer_Id, Person_Id = testP.Person_Id };
+            Book agatha3 = new Book() { Book_Id = 24, Title = "Endless Night", Published = 1967, Genre = "Crime novel", Writer_Id = agathaChristie.Writer_Id, Person_Id = testP.Person_Id };
+            Book agatha4 = new Book() { Book_Id = 25, Title = "Five Little Pigs", Published = 1942, Genre = "Crime novel", Writer_Id = agathaChristie.Writer_Id, Person_Id = testP.Person_Id };
+
+            Book jrrtolkien1 = new Book() { Book_Id = 26, Title = "The Fellowship of the Ring", Published = 1954, Genre = "Fantasy", Writer_Id = jrrTolkien.Writer_Id, Person_Id = testP.Person_Id };
+            Book jrrtolkien2 = new Book() { Book_Id = 27, Title = "The Two Towers", Published = 1954, Genre = "Fantasy", Writer_Id = jrrTolkien.Writer_Id, Person_Id = testP.Person_Id };
+            Book jrrtolkien3 = new Book() { Book_Id = 28, Title = "The Return of the King", Published = 1955, Genre = "Fantasy", Writer_Id = jrrTolkien.Writer_Id, Person_Id = testP.Person_Id };
 
 
-            Book fisrtbook = new Book() { Book_Id = 1, Title = "Grease Junkie", Published=2015, Genre="Autobiography", Writer_Id=eddChina.Writer_Id, Person_Id=testP.Person_Id};
-            
-            
 
-            //Brand bmw = new Brand() { Id = 1, Name = "BMW" };
-            //Brand citroen = new Brand() { Id = 2, Name = "Citroen" };
-            //Brand audi = new Brand() { Id = 3, Name = "Audi" };
 
-            //Car bmw1 = new Car() { Id = 1, BrandId = bmw.Id, BasePrice = 20000, Model = "BMW 116d" };
-            //Car bmw2 = new Car() { Id = 2, BrandId = bmw.Id, BasePrice = 30000, Model = "BMW 510" };
-            //Car citroen1 = new Car() { Id = 3, BrandId = citroen.Id, BasePrice = 10000, Model = "Citroen C1" };
-            //Car citroen2 = new Car() { Id = 4, BrandId = citroen.Id, BasePrice = 15000, Model = "Citroen C3" };
-            //Car audi1 = new Car() { Id = 5, BrandId = audi.Id, BasePrice = 20000, Model = "Audi A3" };
-            //Car audi2 = new Car() { Id = 6, BrandId = audi.Id, BasePrice = 25000, Model = "Audi A4" };
 
-            //modelBuilder.Entity<Brand>().HasData(bmw, citroen, audi);
-            //modelBuilder.Entity<Car>().HasData(bmw1, bmw2, citroen1, citroen2, audi1, audi2);
+
+            #endregion books
+
+
+
 
             modelBuilder.Entity<Writer>().HasData(eddChina,georgeOrwell, ernestHemingway, jkRowling, georgeRRMartin,
             agathaChristie, jrrTolkien, molnarFerenc, moriczZsigmond, jokaiMor, mikszathKalman, gunterGrass, 
             erichKastner, franzKafka, jamesJoyce, levNyTolsztoj, alekszandrPuskin, victorHugo, antonPCsehov);
 
-            modelBuilder.Entity<Book>().HasData(fisrtbook);
+            modelBuilder.Entity<Book>().HasData(edd1, george1, george2, george3, ernest1, ernest2, ernest3, ernest4,
+            jkRowling1, jkRowling2, jkRowling3, jkRowling4, jkRowling5, jkRowling6, jkRowling7, jkRowling8,
+            georgeRR1, georgeRR2, georgeRR3, georgeRR4, georgeRR5, agatha1, agatha2, agatha3, agatha4,
+            jrrtolkien1,jrrtolkien2,jrrtolkien3);
+
+
             modelBuilder.Entity<Person>().HasData(testP);
         }
 

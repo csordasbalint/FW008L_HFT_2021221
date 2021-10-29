@@ -12,6 +12,7 @@ namespace FW008L_HFT_2021221.Client
 
             var test = db.Writers.ToList();
 
+            var test2 = db.Books.ToList();
 
             ;
             
