@@ -62,7 +62,7 @@ namespace FW008L_HFT_2021221.Data
             Writer jokaiMor = new Writer() { Writer_Id = 10, Name = "Jókai Mór", Age = 79, Nationality = "Hungarian" };
             Writer mikszathKalman = new Writer() { Writer_Id = 11, Name = "Mikszáth Kálmán", Age = 63, Nationality = "Hungarian" };
             Writer gunterGrass = new Writer() { Writer_Id = 12, Name = "Günter Grass", Age = 87, Nationality = "German" };
-            Writer erichKastner = new Writer() { Writer_Id = 13, Name = "Erich Kästner", Age = 75, Nationality = "German" };  //zwei lotti ja
+            Writer erichKastner = new Writer() { Writer_Id = 13, Name = "Erich Kästner", Age = 75, Nationality = "German" };
             Writer franzKafka = new Writer() { Writer_Id = 14, Name = "Franz Kafka", Age = 40, Nationality = "Czech" };
             Writer jamesJoyce = new Writer() { Writer_Id = 15, Name = "James Joyce", Age = 58, Nationality = "Irish" };
             Writer levNyTolsztoj = new Writer() { Writer_Id = 16, Name = "Lev Ny. Tolsztoj", Age = 82, Nationality = "Russian" };
@@ -108,10 +108,67 @@ namespace FW008L_HFT_2021221.Data
             Book jrrtolkien2 = new Book() { Book_Id = 27, Title = "The Two Towers", Published = 1954, Genre = "Fantasy", Writer_Id = jrrTolkien.Writer_Id, Person_Id = testP.Person_Id };
             Book jrrtolkien3 = new Book() { Book_Id = 28, Title = "The Return of the King", Published = 1955, Genre = "Fantasy", Writer_Id = jrrTolkien.Writer_Id, Person_Id = testP.Person_Id };
 
+            Book molnarF1 = new Book() { Book_Id = 29, Title = "The Boys of Paul Street", Published = 1906, Genre = "Novel", Writer_Id = molnarFerenc.Writer_Id, Person_Id = testP.Person_Id };
 
+            Book moricz1 = new Book() { Book_Id = 30, Title = "Be Faithful Unto Death", Published = 1920, Genre = "Novel", Writer_Id = moriczZsigmond.Writer_Id, Person_Id = testP.Person_Id };
+            Book moricz2 = new Book() { Book_Id = 31, Title = "Behind God's Back", Published = 1917, Genre = "Novel", Writer_Id = moriczZsigmond.Writer_Id, Person_Id = testP.Person_Id };
+            Book moricz3 = new Book() { Book_Id = 32, Title = "Seven Pennies", Published = 1908, Genre = "Short-story", Writer_Id = moriczZsigmond.Writer_Id, Person_Id = testP.Person_Id };
+            Book moricz4 = new Book() { Book_Id = 33, Title = "Just To Remain", Published = 1920, Genre = "Poem", Writer_Id = moriczZsigmond.Writer_Id, Person_Id = testP.Person_Id };
 
+            Book jokai1 = new Book() { Book_Id = 34, Title = "The Man with the Golden Touch", Published = 1872, Genre = "Novel", Writer_Id = jokaiMor.Writer_Id, Person_Id = testP.Person_Id };
+            Book jokai2 = new Book() { Book_Id = 35, Title = "The Baron’s Sons", Published = 1869, Genre = "Novel", Writer_Id = jokaiMor.Writer_Id, Person_Id = testP.Person_Id };
+            Book jokai3 = new Book() { Book_Id = 36, Title = "The Corsair King", Published = 1886, Genre = "Romance Novel", Writer_Id = jokaiMor.Writer_Id, Person_Id = testP.Person_Id };
+            Book jokai4 = new Book() { Book_Id = 37, Title = "Black diamonds", Published = 1870, Genre = "Novel", Writer_Id = jokaiMor.Writer_Id, Person_Id = testP.Person_Id };
 
+            Book mikszath1 = new Book() { Book_Id = 38, Title = "St. Peter's Umbrella", Published = 1895, Genre = "Novel", Writer_Id = mikszathKalman.Writer_Id, Person_Id = testP.Person_Id };
+            Book mikszath2 = new Book() { Book_Id = 39, Title = "The Siege of Beszterce", Published = 1894, Genre = "Novel", Writer_Id = mikszathKalman.Writer_Id, Person_Id = testP.Person_Id };
+            Book mikszath3 = new Book() { Book_Id = 40, Title = "Strange Marriage", Published = 1901, Genre = "Novel", Writer_Id = mikszathKalman.Writer_Id, Person_Id = testP.Person_Id };
+            Book mikszath4 = new Book() { Book_Id = 41, Title = "The ​Good People of Palocz", Published = 1882, Genre = "Novel", Writer_Id = mikszathKalman.Writer_Id, Person_Id = testP.Person_Id };
 
+            Book gunter1 = new Book() { Book_Id = 42, Title = "The Tin Drum", Published = 1959, Genre = "Magic realism", Writer_Id = gunterGrass.Writer_Id, Person_Id = testP.Person_Id };
+            Book gunter2 = new Book() { Book_Id = 43, Title = "Cat and Mouse", Published = 1963, Genre = "Novel", Writer_Id = gunterGrass.Writer_Id, Person_Id = testP.Person_Id };
+            Book gunter3 = new Book() { Book_Id = 44, Title = "Dog Years", Published = 1965, Genre = "Novel", Writer_Id = gunterGrass.Writer_Id, Person_Id = testP.Person_Id };
+            Book gunter4 = new Book() { Book_Id = 45, Title = "My Century", Published = 1999, Genre = "Fiction", Writer_Id = gunterGrass.Writer_Id, Person_Id = testP.Person_Id };
+            Book gunter5 = new Book() { Book_Id = 46, Title = "Peeling the Onion", Published = 2006, Genre = "Autobiography", Writer_Id = gunterGrass.Writer_Id, Person_Id = testP.Person_Id };
+
+            Book erich1 = new Book() { Book_Id = 47, Title = "Emil and the Detectives", Published = 1929, Genre = "Fiction", Writer_Id = erichKastner.Writer_Id, Person_Id = testP.Person_Id };
+            Book erich2 = new Book() { Book_Id = 48, Title = "The Two Lottes", Published = 1949, Genre = "Novel", Writer_Id = erichKastner.Writer_Id, Person_Id = testP.Person_Id };
+            Book erich3 = new Book() { Book_Id = 49, Title = "Three Men in the Snow", Published = 1934, Genre = "Fiction", Writer_Id = erichKastner.Writer_Id, Person_Id = testP.Person_Id };
+            Book erich4 = new Book() { Book_Id = 50, Title = "The Animal Congress", Published = 1949, Genre = "Satire", Writer_Id = erichKastner.Writer_Id, Person_Id = testP.Person_Id };
+
+            Book franz1 = new Book() { Book_Id = 52, Title = "A Country Doctor", Published = 1917, Genre = "Short-story", Writer_Id = franzKafka.Writer_Id, Person_Id = testP.Person_Id };
+            Book franz2 = new Book() { Book_Id = 53, Title = "The Stoker", Published = 1913, Genre = "Short-story", Writer_Id = franzKafka.Writer_Id, Person_Id = testP.Person_Id };
+            Book franz3 = new Book() { Book_Id = 54, Title = "The Judgment", Published = 1913, Genre = "Short-story", Writer_Id = franzKafka.Writer_Id, Person_Id = testP.Person_Id };
+            Book franz4 = new Book() { Book_Id = 55, Title = "In the Penal Colony", Published = 1919, Genre = "Short-story", Writer_Id = franzKafka.Writer_Id, Person_Id = testP.Person_Id };
+            Book franz5 = new Book() { Book_Id = 56, Title = "Metamorphosis", Published = 1915, Genre = "Allegorical novel", Writer_Id = franzKafka.Writer_Id, Person_Id = testP.Person_Id };
+            Book franz6 = new Book() { Book_Id = 57, Title = "Before the Law", Published = 1915, Genre = "Parable", Writer_Id = franzKafka.Writer_Id, Person_Id = testP.Person_Id };
+
+            Book james1 = new Book() { Book_Id = 58, Title = " A Portrait of the Artist as a Young Man", Published = 1916, Genre = "Novel", Writer_Id = jamesJoyce.Writer_Id, Person_Id = testP.Person_Id };
+            Book james2 = new Book() { Book_Id = 59, Title = "Ulysses", Published = 1922, Genre = "Novel", Writer_Id = jamesJoyce.Writer_Id, Person_Id = testP.Person_Id };
+            Book james3 = new Book() { Book_Id = 60, Title = "Stephen Hero", Published = 1944, Genre = "Novel", Writer_Id = jamesJoyce.Writer_Id, Person_Id = testP.Person_Id };
+            Book james4 = new Book() { Book_Id = 61, Title = "Finnegans Wake", Published = 1939, Genre = "Novel", Writer_Id = jamesJoyce.Writer_Id, Person_Id = testP.Person_Id };
+            Book james5 = new Book() { Book_Id = 62, Title = "The Dead", Published = 1914, Genre = "Short-story", Writer_Id = jamesJoyce.Writer_Id, Person_Id = testP.Person_Id };
+
+            Book tolsztoj1 = new Book() { Book_Id = 63, Title = "Sevastopol Sketches", Published = 1855, Genre = "Short-story", Writer_Id = levNyTolsztoj.Writer_Id, Person_Id = testP.Person_Id };
+            Book tolsztoj2 = new Book() { Book_Id = 64, Title = "Boyhood", Published = 1854, Genre = "Novel", Writer_Id = levNyTolsztoj.Writer_Id, Person_Id = testP.Person_Id };
+            Book tolsztoj3 = new Book() { Book_Id = 65, Title = "The Kingdom of God Is Within You", Published = 1894, Genre = "Fiction", Writer_Id = levNyTolsztoj.Writer_Id, Person_Id = testP.Person_Id };
+            Book tolsztoj4 = new Book() { Book_Id = 66, Title = "The Awakening", Published = 1899, Genre = "Fiction", Writer_Id = levNyTolsztoj.Writer_Id, Person_Id = testP.Person_Id };
+            Book tolsztoj5 = new Book() { Book_Id = 67, Title = "A Confession", Published = 1882, Genre = "Fiction", Writer_Id = levNyTolsztoj.Writer_Id, Person_Id = testP.Person_Id };
+
+            Book alekszandr1 = new Book() { Book_Id = 68, Title = "Eugene Onegin", Published = 1825, Genre = "Novel", Writer_Id = alekszandrPuskin.Writer_Id, Person_Id = testP.Person_Id };
+            Book alekszandr2 = new Book() { Book_Id = 69, Title = "The Captain's Daughter", Published = 1836, Genre = "Historical novel", Writer_Id = alekszandrPuskin.Writer_Id, Person_Id = testP.Person_Id };
+            Book alekszandr3 = new Book() { Book_Id = 70, Title = "The Queen of Spades", Published = 1834, Genre = "Short-story", Writer_Id = alekszandrPuskin.Writer_Id, Person_Id = testP.Person_Id };
+            Book alekszandr4 = new Book() { Book_Id = 71, Title = "The Bronze Horseman", Published = 1837, Genre = "Narrative novel", Writer_Id = alekszandrPuskin.Writer_Id, Person_Id = testP.Person_Id };
+
+            Book victor1 = new Book() { Book_Id = 72, Title = "The Man Who Laughs", Published = 1869, Genre = "Novel", Writer_Id = victorHugo.Writer_Id, Person_Id = testP.Person_Id };
+            Book victor2 = new Book() { Book_Id = 73, Title = "Toilers of the Sea", Published = 1866, Genre = "Novel", Writer_Id = victorHugo.Writer_Id, Person_Id = testP.Person_Id };
+            Book victor3 = new Book() { Book_Id = 74, Title = "The Last Day of a Condemned Man", Published = 1829, Genre = "Novel", Writer_Id = victorHugo.Writer_Id, Person_Id = testP.Person_Id };
+            Book victor4 = new Book() { Book_Id = 75, Title = "Hans of Iceland", Published = 1823, Genre = "Fiction", Writer_Id = victorHugo.Writer_Id, Person_Id = testP.Person_Id };
+
+            Book anton1 = new Book() { Book_Id = 76, Title = "The Lady with the Dog", Published = 1899, Genre = "Fiction", Writer_Id = antonPCsehov.Writer_Id, Person_Id = testP.Person_Id };
+            Book anton2 = new Book() { Book_Id = 77, Title = "Gooseberries", Published = 1898, Genre = "Short-story", Writer_Id = antonPCsehov.Writer_Id, Person_Id = testP.Person_Id };
+            Book anton3 = new Book() { Book_Id = 78, Title = "About Love", Published = 1898, Genre = "Short-story", Writer_Id = antonPCsehov.Writer_Id, Person_Id = testP.Person_Id };
+            Book anton4 = new Book() { Book_Id = 79, Title = "The Bet", Published = 1889, Genre = "Short-story", Writer_Id = antonPCsehov.Writer_Id, Person_Id = testP.Person_Id };
 
             #endregion books
 
@@ -125,7 +182,12 @@ namespace FW008L_HFT_2021221.Data
             modelBuilder.Entity<Book>().HasData(edd1, george1, george2, george3, ernest1, ernest2, ernest3, ernest4,
             jkRowling1, jkRowling2, jkRowling3, jkRowling4, jkRowling5, jkRowling6, jkRowling7, jkRowling8,
             georgeRR1, georgeRR2, georgeRR3, georgeRR4, georgeRR5, agatha1, agatha2, agatha3, agatha4,
-            jrrtolkien1,jrrtolkien2,jrrtolkien3);
+            jrrtolkien1, jrrtolkien2, jrrtolkien3, molnarF1, moricz1, moricz2, moricz3, moricz4,
+            jokai1, jokai2, jokai3, jokai4, mikszath1, mikszath2, mikszath3, mikszath4, gunter1, gunter2,
+            gunter3, gunter4, gunter5, erich1, erich2, erich3, erich4, franz1, franz2, franz3, franz4, franz5, franz6,
+            james1, james2, james3, james4, james5, tolsztoj1, tolsztoj2, tolsztoj3, tolsztoj4, tolsztoj5,
+            alekszandr1, alekszandr2, alekszandr3, alekszandr4, victor1, victor2, victor3, victor4,
+            anton1, anton2, anton3, anton4);
 
 
             modelBuilder.Entity<Person>().HasData(testP);
