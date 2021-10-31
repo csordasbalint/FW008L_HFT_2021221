@@ -34,7 +34,7 @@ namespace FW008L_HFT_2021221.Models
         public virtual Person Person { get; set; }
 
         [ForeignKey(nameof(Person))]
-        public int Person_Id { get; set; }
+        public Nullable<int> Person_Id { get; set; }
 
     }
 }

@@ -12,7 +12,7 @@ namespace FW008L_HFT_2021221.Models
     public class Person
     {
         [Key]
-        public int Person_Id { get; set; }
+        public int  Person_Id { get; set; }
 
         [Required]
         public string Name { get; set; }
