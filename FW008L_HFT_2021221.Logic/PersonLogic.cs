@@ -19,7 +19,14 @@ namespace FW008L_HFT_2021221.Logic
 
         public void Create(Person person)
         {
-            personRepo.Create(person);
+            if (person.Age <= 0)
+            {
+                throw new ArgumentException("Age must be greater than 0");
+            }
+            else
+            {
+                personRepo.Create(person);
+            }
         }
 
         public void Delete(int id)

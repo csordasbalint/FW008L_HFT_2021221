@@ -19,7 +19,15 @@ namespace FW008L_HFT_2021221.Logic
 
         public void Create(Writer writer)
         {
-            writerRepo.Create(writer);
+            if (writer.Age <= 0)
+            {
+                throw new ArgumentException("Age must be greater than 0");
+            }
+            else
+            {
+                writerRepo.Create(writer);
+            }
+            
         }
 
         public void Delete(int id)
