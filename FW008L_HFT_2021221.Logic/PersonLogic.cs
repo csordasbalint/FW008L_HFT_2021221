@@ -50,5 +50,17 @@ namespace FW008L_HFT_2021221.Logic
         }
 
 
+        //=================================================================================================
+        //4th non-crud method--gives back hungarian people who borrowed books from the library(and the amount)
+        public IEnumerable<KeyValuePair<string, int>> HungarianReaders()
+        {
+            return from x in personRepo.ReadAll()
+                   where x.Nationality.ToLower().Contains("hungarian")
+                   orderby x.Books.Count
+                   select new KeyValuePair<string, int>(x.Name, x.Books.Count());
+        }
+        //=================================================================================================
+
+
     }
 }

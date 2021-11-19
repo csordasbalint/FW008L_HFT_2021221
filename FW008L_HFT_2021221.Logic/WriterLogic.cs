@@ -50,5 +50,27 @@ namespace FW008L_HFT_2021221.Logic
             return writerRepo.ReadAll();
         }
 
+
+
+        //=================================================================================================
+        //5th non-crud method--gives back the 2 most productive writers and the amount of books they have written
+        public IEnumerable<KeyValuePair<string,int>> Top2ProductiveWriters()
+        {
+            var top2 = writerRepo.ReadAll().OrderByDescending(x => x.Books.Count).Select(x => x.Name);
+
+            var top2_2= from x in writerRepo.ReadAll()
+                        where top2.Contains(x.Name)
+                        orderby x.Books.Count descending
+                        select new KeyValuePair<string, int>
+                        (x.Name,x.Books.Count);
+
+            return top2_2.Take(2);
+        }
+        //=================================================================================================
+
+
+
+
+
     }
 }

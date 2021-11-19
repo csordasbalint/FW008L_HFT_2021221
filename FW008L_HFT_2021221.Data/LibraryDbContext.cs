@@ -70,7 +70,7 @@ namespace FW008L_HFT_2021221.Data
             Person jesper = new Person() { Person_Id = 20, Name = "Jesper ", Age = 47, Nationality = "Icelandic" };
             Person patricio = new Person() { Person_Id = 21, Name = "Patricio", Age = 38, Nationality = "Portuguese" };
             Person ras = new Person() { Person_Id = 22, Name = "Ras", Age = 20, Nationality = "Dutch" };
-            Person flamur = new Person() { Person_Id = 23, Name = "Flamur", Age = 54, Nationality = "Albenian" };
+            Person flamur = new Person() { Person_Id = 23, Name = "Flamur", Age = 54, Nationality = "Italian" };
             Person herbert = new Person() { Person_Id = 24, Name = "Herbert", Age = 16, Nationality = "German" };
             #endregion people
 
