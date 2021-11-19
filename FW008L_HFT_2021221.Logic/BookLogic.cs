@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace FW008L_HFT_2021221.Logic
 {
-    public class BookLogic
+    public class BookLogic : IBookLogic
     {
         IBookRepository bookRepo;
 
@@ -27,7 +27,7 @@ namespace FW008L_HFT_2021221.Logic
             {
                 bookRepo.Create(book);
             }
-            
+
         }
 
         public void Delete(int id)
@@ -53,12 +53,12 @@ namespace FW008L_HFT_2021221.Logic
 
         //=================================================================================================
         //1st non-crud method--gives back those people who are 18 years old or younger, and how many books they have borrowed
-        public IEnumerable<KeyValuePair<string,int>> HowManyBooksDoTheyReadUnder18()
+        public IEnumerable<KeyValuePair<string, int>> HowManyBooksDoTheyReadUnder18()
         {
             return (from x in bookRepo.ReadAll()
-                   where x.Person.Age < 19
-                   orderby x.Person.Name ascending
-                   select new KeyValuePair<string, int>(x.Person.Name, x.Person.Books.Count)).Distinct();
+                    where x.Person.Age < 19
+                    orderby x.Person.Name ascending
+                    select new KeyValuePair<string, int>(x.Person.Name, x.Person.Books.Count)).Distinct();
         }
         //=================================================================================================
 

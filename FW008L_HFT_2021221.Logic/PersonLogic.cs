@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace FW008L_HFT_2021221.Logic
 {
-    public class PersonLogic
+    public class PersonLogic : IPersonLogic
     {
         IPersonRepository personRepo;
 
