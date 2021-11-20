@@ -1,6 +1,7 @@
 ﻿using FW008L_HFT_2021221.Logic;
 using FW008L_HFT_2021221.Models;
 using FW008L_HFT_2021221.Repository;
+using Moq;
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;
@@ -16,149 +17,122 @@ namespace FW008L_HFT_2021221.Test
         BookLogic bl;
         PersonLogic pl;
         WriterLogic wl;
-        
-        public TesterClass()
+
+        [SetUp]
+        public void InIt() 
         {
-            bl = new BookLogic(new FakeBookRepository());
-            pl = new PersonLogic(new FakePersonRepository());
-            wl = new WriterLogic(new FakeWriterRepository());
-        }
+            var mockBookRepository =new Mock<IBookRepository>();
+            var mockPersonRepository = new Mock<IPersonRepository>();
+            var mockWriterRepository = new Mock<IWriterRepository>();
 
-        #region fakepersonrepo
-        class FakePersonRepository : IPersonRepository
-        {
-            public void Create(Person person)
-            {
-                //deleted for testing
-            }
 
-            public void Delete(int id)
-            {
-                throw new NotImplementedException();
-            }
+            Writer writer1 = new Writer();
+            writer1.Writer_Id = 1;
+            writer1.Name = "George Orwell";
 
-            public Person Read(int id)
-            {
-                throw new NotImplementedException();
-            }
+            Writer writer2 = new Writer();
+            writer2.Writer_Id = 2;
+            writer2.Name = "Edd China";
 
-            public IQueryable<Person> ReadAll()
-            {
-                Person fakePerson = new Person();
-                fakePerson.Person_Id = 1;
-                fakePerson.Name = "Victor";
-                fakePerson.Nationality = "innen";
-                fakePerson.Age = 15;
 
-                return (IQueryable<Person>)new List<Book>()
+            Person fakePerson = new Person();
+            fakePerson.Person_Id = 1;
+            fakePerson.Name = "Herbert";
+            fakePerson.Age = 17;       
+            //fakePerson.Books.Count = 2;
+
+            var books = new List<Book>()
                 {
                     new Book(){
-                        Genre= "novel",
-                        Title = "elég",
-                        Published = 1995,
                         Book_Id = 1,
-                        Person = fakePerson
+                        Person_Id = fakePerson.Person_Id,
+                        Person = fakePerson,
 
+                        Title= "Peeling the Onion",
+                        Genre= "Novel",
+
+                        Published = 1949,
+                        Writer = writer1,
+                        Writer_Id = 1
                     },
                     new Book(){
-                        Genre= "novel",
-                        Title = "elég",
-                        Published = 1999,
                         Book_Id = 2,
-                        Person = fakePerson
+                        Person_Id = fakePerson.Person_Id,
+                        Person = fakePerson,
+
+                        Title = "Animal Farm",
+                        Genre= "Novel",
+
+                        Published = 1933,
+                        Writer = writer1,
+                        Writer_Id = 1
+                    },
+                    new Book(){
+                        Book_Id = 3,
+                        Person_Id = fakePerson.Person_Id,
+                        Person = fakePerson,
+
+                        Title = "Grease Junkie",
+                        Genre= "Autobiography",
+
+                        Published = 2011,
+                        Writer = writer2,
+                        Writer_Id = 2
                     }
                 }.AsQueryable();
-            }
 
-            public void Update(Person person)
-            {
-                throw new NotImplementedException();
-            }
+
+
+            mockBookRepository.Setup((t) => t.ReadAll()).Returns(books);
+
+
+            bl = new BookLogic(mockBookRepository.Object);
+            pl = new PersonLogic(mockPersonRepository.Object);
+            wl = new WriterLogic(mockWriterRepository.Object);
         }
-        #endregion fakepersonrepo
-
-
-        #region fakebookrepo
-        class FakeBookRepository : IBookRepository
-        {
-            public void Create(Book book)
-            {
-                
-            }
-
-            public void Delete(int id)
-            {
-                throw new NotImplementedException();
-            }
-
-            public Book Read(int id)
-            {
-                throw new NotImplementedException();
-            }
-
-            public IQueryable<Book> ReadAll()
-            {
-                throw new NotImplementedException();
-            }
-
-            public void Update(Book book)
-            {
-                throw new NotImplementedException();
-            }
-        }
-        #endregion fakebookrepo
-
-
-        #region fakewriterrepo
-        class FakeWriterRepository : IWriterRepository
-        {
-            public void Create(Writer writer)
-            {
-                
-            }
-
-            public void Delete(int id)
-            {
-                throw new NotImplementedException();
-            }
-
-            public Writer Read(int id)
-            {
-                throw new NotImplementedException();
-            }
-
-            public IQueryable<Writer> ReadAll()
-            {
-                throw new NotImplementedException();
-            }
-
-            public void Update(Writer writer)
-            {
-                throw new NotImplementedException();
-            }
-        }
-        #endregion fakewriterrepo
-
 
         //[Test]
         //public void ElsoTeszt()
-        //{
-        //    //ARRANGE
-        //    PersonLogic cl = new PersonLogic(new FakePersonRepository());
-        //    //ACT
-        //    var result = cl.HungarianReaders();
-
-        //    //ASSERT
-        //    var expected = new List<KeyValuePair<string, double>>()
+        //{            
+        //    var result = bl.HowManyBooksDoTheyReadUnder18();  //should be 2 but its 0
+            
+        //    var expected = new List<KeyValuePair<string, int>>()
         //    {
-        //        new KeyValuePair<string, double>
-        //        ("Victor", 2)
+        //        new KeyValuePair<string, int>
+        //        ("Herbert", 2)
         //    };
 
         //    Assert.That(result, Is.EqualTo(expected));
         //}
 
+        [Test]
+        public void LatestPublishedBookByGeorgeTest()
+        {
+            var result = bl.LatestPublishedBooksByGeorges();
+            
+            var expected = new List<KeyValuePair<string, int>>()
+            {
+                new KeyValuePair<string, int>
+                ("George Orwell",1949)
+            };
 
+            Assert.That(result, Is.EqualTo(expected));
+        }
+
+
+        [Test]
+        public void IsGenreAutobiographyTest()
+        {
+            var result = bl.AutobiographiesByTitle();
+
+            var expected = new List<KeyValuePair<string, string>>()
+            {
+                new KeyValuePair<string, string>
+                ("Edd China", "Autobiography")
+            };
+
+            Assert.That(result, Is.EqualTo(expected));
+        }
 
 
 

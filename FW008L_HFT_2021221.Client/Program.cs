@@ -24,6 +24,8 @@ namespace FW008L_HFT_2021221.Client
 
 
             var logic2 = bcl.HowManyBooksDoTheyReadUnder18();
+            ;
+
 
             var logic3 = bcl.LatestPublishedBooksByGeorges();
 
@@ -33,8 +35,8 @@ namespace FW008L_HFT_2021221.Client
             var logic5 = wlc.Top2ProductiveWriters();
 
             //Top5ProductiveWriters
-
-            ;
+            
+            
         }
     }
 }

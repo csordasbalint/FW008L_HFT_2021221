@@ -59,9 +59,10 @@ namespace FW008L_HFT_2021221.Logic
                     where x.Person.Age < 19
                     orderby x.Person.Name ascending
                     select new KeyValuePair<string, int>(x.Person.Name, x.Person.Books.Count)).Distinct();
+
         }
         //=================================================================================================
-
+        
 
 
         //=================================================================================================
