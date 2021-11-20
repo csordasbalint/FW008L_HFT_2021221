@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace FW008L_HFT_2021221.Models
@@ -24,6 +25,7 @@ namespace FW008L_HFT_2021221.Models
 
 
         [NotMapped]
+        [JsonIgnore]
         public virtual Writer Writer { get; set; }
 
         [ForeignKey(nameof(Writer))]
@@ -31,6 +33,7 @@ namespace FW008L_HFT_2021221.Models
 
 
         [NotMapped]
+        [JsonIgnore]
         public virtual Person Person { get; set; }
 
         [ForeignKey(nameof(Person))]
