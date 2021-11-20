@@ -35,75 +35,91 @@ namespace FW008L_HFT_2021221.Test
             writer2.Name = "Edd China";
 
 
-            Person fakePerson = new Person();
-            fakePerson.Person_Id = 1;
-            fakePerson.Name = "Herbert";
-            fakePerson.Age = 17;       
-            //fakePerson.Books.Count = 2;
+            Person person1 = new Person();
+            person1.Person_Id = 1;
+            person1.Name = "Herbert";
+            person1.Age = 17;
+            person1.Nationality = "Hungarian";
+
 
             var books = new List<Book>()
                 {
-                    new Book(){
+                    new Book()
+                    {
                         Book_Id = 1,
-                        Person_Id = fakePerson.Person_Id,
-                        Person = fakePerson,
+                        Person_Id = person1.Person_Id,
+                        Person = person1,
 
                         Title= "Peeling the Onion",
                         Genre= "Novel",
 
                         Published = 1949,
                         Writer = writer1,
-                        Writer_Id = 1
+                        Writer_Id = writer1.Writer_Id
                     },
-                    new Book(){
+                    new Book()
+                    {
                         Book_Id = 2,
-                        Person_Id = fakePerson.Person_Id,
-                        Person = fakePerson,
+                        Person_Id = person1.Person_Id,
+                        Person = person1,
 
                         Title = "Animal Farm",
                         Genre= "Novel",
 
                         Published = 1933,
                         Writer = writer1,
-                        Writer_Id = 1
+                        Writer_Id = writer1.Writer_Id
                     },
-                    new Book(){
+                    new Book()
+                    {
                         Book_Id = 3,
-                        Person_Id = fakePerson.Person_Id,
-                        Person = fakePerson,
+                        Person_Id = person1.Person_Id,
+                        Person = person1,
 
                         Title = "Grease Junkie",
                         Genre= "Autobiography",
 
                         Published = 2011,
                         Writer = writer2,
-                        Writer_Id = 2
+                        Writer_Id = writer2.Writer_Id
                     }
-                }.AsQueryable();
+                };
+          
+            person1.Books.Add(books[0]);
+            person1.Books.Add(books[1]);
+            person1.Books.Add(books[2]);
+            
+            writer1.Books.Add(books[0]);
+            writer1.Books.Add(books[1]);
+            writer2.Books.Add(books[2]);
 
 
-
-            mockBookRepository.Setup((t) => t.ReadAll()).Returns(books);
-
+            mockPersonRepository.Setup((t) => t.ReadAll()); //folytatni valahogy
+            mockBookRepository.Setup((t) => t.ReadAll()).Returns(books.AsQueryable());
+   
 
             bl = new BookLogic(mockBookRepository.Object);
             pl = new PersonLogic(mockPersonRepository.Object);
             wl = new WriterLogic(mockWriterRepository.Object);
         }
 
-        //[Test]
-        //public void ElsoTeszt()
-        //{            
-        //    var result = bl.HowManyBooksDoTheyReadUnder18();  //should be 2 but its 0
-            
-        //    var expected = new List<KeyValuePair<string, int>>()
-        //    {
-        //        new KeyValuePair<string, int>
-        //        ("Herbert", 2)
-        //    };
 
-        //    Assert.That(result, Is.EqualTo(expected));
-        //}
+
+
+        [Test]
+        public void HowManyBooksTest()
+        {
+            var result = bl.HowManyBooksDoTheyReadUnder18();
+
+            var expected = new List<KeyValuePair<string, int>>()
+            {
+                new KeyValuePair<string, int>
+                ("Herbert", 3)
+            };
+
+            Assert.That(result, Is.EqualTo(expected));
+        }
+
 
         [Test]
         public void LatestPublishedBookByGeorgeTest()
@@ -133,6 +149,38 @@ namespace FW008L_HFT_2021221.Test
 
             Assert.That(result, Is.EqualTo(expected));
         }
+
+
+        [Test]
+        public void HungarianReadersTest()
+        {
+            var result = pl.HungarianReaders();
+            
+            var expected = new List<KeyValuePair<string, int>>()
+            {
+                new KeyValuePair<string, int>
+                ("Herbert", 3)
+            };
+            ;
+            Assert.That(result, Is.EqualTo(expected));
+        }
+
+
+        [Test]
+        public void TheMostProductiveWriterTest()
+        {
+            var result = wl.Top2ProductiveWriters();
+
+            var expected = new List<KeyValuePair<string, int>>()
+            {
+                new KeyValuePair<string, int>
+                ("George Orwell", 2)
+            };
+            ;
+            Assert.That(result, Is.EqualTo(expected));
+        }
+
+
 
 
 

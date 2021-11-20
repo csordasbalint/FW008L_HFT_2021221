@@ -57,7 +57,7 @@ namespace FW008L_HFT_2021221.Logic
             return from x in personRepo.ReadAll()
                    where x.Nationality.ToLower().Contains("hungarian")
                    orderby x.Books.Count
-                   select new KeyValuePair<string, int>(x.Name, x.Books.Count());
+                   select new KeyValuePair<string, int>(x.Name, x.Books.Count);
         }
         //=================================================================================================
 
