@@ -41,6 +41,16 @@ namespace FW008L_HFT_2021221.Test
             person1.Age = 17;
             person1.Nationality = "Hungarian";
 
+            Person person2 = new Person();
+            person2.Person_Id = 2;
+            person2.Name = "James";
+            person2.Age = 25;
+            person2.Nationality = "German";
+
+
+            List<Writer> writers = new List<Writer>() { writer1, writer2 };
+            List<Person> people = new List<Person>() { person1, person2 };
+
 
             var books = new List<Book>()
                 {
@@ -73,8 +83,8 @@ namespace FW008L_HFT_2021221.Test
                     new Book()
                     {
                         Book_Id = 3,
-                        Person_Id = person1.Person_Id,
-                        Person = person1,
+                        Person_Id = person2.Person_Id,
+                        Person = person2,
 
                         Title = "Grease Junkie",
                         Genre= "Autobiography",
@@ -87,14 +97,17 @@ namespace FW008L_HFT_2021221.Test
           
             person1.Books.Add(books[0]);
             person1.Books.Add(books[1]);
-            person1.Books.Add(books[2]);
+            person2.Books.Add(books[2]);
             
             writer1.Books.Add(books[0]);
             writer1.Books.Add(books[1]);
             writer2.Books.Add(books[2]);
 
 
-            mockPersonRepository.Setup((t) => t.ReadAll()); //folytatni valahogy
+
+
+            mockWriterRepository.Setup((t) => t.ReadAll()).Returns(writers.AsQueryable); 
+            mockPersonRepository.Setup((t) => t.ReadAll()).Returns(people.AsQueryable); 
             mockBookRepository.Setup((t) => t.ReadAll()).Returns(books.AsQueryable());
    
 
@@ -114,9 +127,9 @@ namespace FW008L_HFT_2021221.Test
             var expected = new List<KeyValuePair<string, int>>()
             {
                 new KeyValuePair<string, int>
-                ("Herbert", 3)
+                ("Herbert", 2)
             };
-
+            
             Assert.That(result, Is.EqualTo(expected));
         }
 
@@ -159,9 +172,9 @@ namespace FW008L_HFT_2021221.Test
             var expected = new List<KeyValuePair<string, int>>()
             {
                 new KeyValuePair<string, int>
-                ("Herbert", 3)
+                ("Herbert", 2)
             };
-            ;
+            
             Assert.That(result, Is.EqualTo(expected));
         }
 
@@ -174,9 +187,11 @@ namespace FW008L_HFT_2021221.Test
             var expected = new List<KeyValuePair<string, int>>()
             {
                 new KeyValuePair<string, int>
-                ("George Orwell", 2)
+                ("George Orwell", 2),
+                new KeyValuePair<string, int>
+                ("Edd China", 1)
             };
-            ;
+            
             Assert.That(result, Is.EqualTo(expected));
         }
 
