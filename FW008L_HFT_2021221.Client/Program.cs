@@ -14,19 +14,17 @@ namespace FW008L_HFT_2021221.Client
             RestService rest = new RestService("http://localhost:48920");  //base url copied from launchSettings.json file
 
 
-            rest.Post<Person>(new Person() 
-            {
-                Name = "Testing Ted",
-                Nationality = "Spanish",
-                Age = 35,
+            //rest.Post<Person>(new Person() 
+            //{
+            //    Name = "Testing Ted",
+            //    Nationality = "Spanish",
+            //    Age = 35,
 
-            }, "person");
+            //}, "person");
 
 
-            var people = rest.Get<Person>("person");
-            var books = rest.Get<Book>("book");
 
-            var  lastbook = rest.Get<KeyValuePair<string, int>>("stat/latestpublishedbooksbygeorges");
+            //var  lastbook = rest.Get<KeyValuePair<string, int>>("stat/latestpublishedbooksbygeorges");
 
 
             
@@ -37,6 +35,8 @@ namespace FW008L_HFT_2021221.Client
             #region userinterface
             Console.Title = "Lukste Library";
 
+            Console.Clear();
+
             string welcomeText = "~~  Welcome!  ~~";
             Console.SetCursorPosition((Console.WindowWidth - welcomeText.Length) / 2, Console.CursorTop); //setting welcometext to the middle
             Console.WriteLine(welcomeText);
@@ -46,13 +46,6 @@ namespace FW008L_HFT_2021221.Client
             Console.WriteLine("Type a number from 1 to 17!");
 
             Console.WriteLine();
-            List<int> numbers = new List<int> { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17 };
-
-            
-
-            Console.WriteLine(string.Format("|| { 0,-20} ",numbers);
-
-
 
             Console.WriteLine("[1]---Listing the books");
             Console.WriteLine("[2]---Listing the people");
@@ -77,86 +70,134 @@ namespace FW008L_HFT_2021221.Client
             Console.WriteLine("[17]--Listing the 2 most productive writers");
 
 
-            int answer = int.Parse(Console.ReadLine());
-            if (answer == 1)
+            Console.WriteLine();
+
+
+            bool stop = true;
+            while (stop)
             {
-                foreach (Person item in people)
+               
+                string menu = Console.ReadLine();
+                switch (menu)
                 {
-                    Console.WriteLine(people); // nicht gut
+                    case "1":
+
+                        var books = rest.Get<Book>("book");
+                        foreach (Book book in books)
+                        {
+                            Console.WriteLine(string.Format("|| {0,-43} | {1,-23} | {2,4} ||", book.Title, book.Genre, book.Published));
+                        }
+                        Console.WriteLine();
+
+                        break;
+
+                    case "2":
+
+                        var people = rest.Get<Person>("person");              
+                        foreach (Person person in people)
+                        {
+                            Console.WriteLine(string.Format("|| {0,-10} | {1,2} | {2,-10} ||", person.Name, person.Age, person.Nationality));
+                        }
+                        Console.WriteLine();
+
+                        break;
+
+                    case "3":
+
+                        var writers = rest.Get<Writer>("writer");
+                        foreach (Writer writer in writers)
+                        {
+                            Console.WriteLine(string.Format("|| {0,-22} | {1,2} | {2,-10} ||", writer.Name, writer.Age, writer.Nationality));
+                        }
+                        Console.WriteLine();
+
+                        break;
+
+                    case "4":
+                        //statement 
+                        break;
+
+                    case "5":
+                        //statement 
+                        break;
+
+                    case "6":
+                        //statement 
+                        break;
+
+                    case "7":
+                        //statement 
+                        break;
+
+                    case "8":
+                        //statement 
+                        break;
+
+                    case "9":
+                        //statement 
+                        break;
+
+                    case "10":
+                        //statement 
+                        break;
+
+                    case "11":
+                        //statement 
+                        break;
+
+                    case "12":
+                        //statement 
+                        break;
+
+                    case "13":
+                        //statement 
+                        break;
+
+                    case "14":
+                        //statement 
+                        break;
+
+                    case "15":
+
+                        var lastbook = rest.Get<KeyValuePair<string, int>>("stat/latestpublishedbooksbygeorges");
+                        foreach (KeyValuePair<string, int> kvp in lastbook)
+                        {
+                            Console.WriteLine("|| Author's name: {0,-20} | The year it was published: {1,2} ||", kvp.Key, kvp.Value);
+                        }
+                        Console.WriteLine();
+
+                        break;
+
+                    case "16":
+
+                        var autobios = rest.Get<KeyValuePair<string, string>>("stat/autobiographiesbytitle");
+                        foreach (KeyValuePair<string, string> kvp in autobios)
+                        {
+                            Console.WriteLine("|| Author's name: {0,-13} | Genre: {1,-10} ||", kvp.Key, kvp.Value);
+                        }
+                        Console.WriteLine();
+
+                        break;
+
+                    case "17":
+
+                        var top2 = rest.Get<KeyValuePair<string, int>>("stat/top2productivewriters");
+                        foreach (KeyValuePair<string, int> kvp in top2)
+                        {
+                            Console.WriteLine(string.Format("|| Author's name: {0,-13} | Number of published books: {1,1} ||", kvp.Key, kvp.Value));
+                        }
+                        Console.WriteLine();
+
+                        break;
+
+
+                    case "stop":
+                    default:
+                        stop = false;
+                        break;
                 }
             }
-            else if (answer == 2)
-            {
 
-            }
-            else if (answer == 3)
-            {
-
-            }
-            else if (answer == 4)
-            {
-
-            }
-            else if (answer == 5)
-            {
-
-            }
-            else if (answer == 6)
-            {
-
-            }
-            else if (answer == 7)
-            {
-                
-            }
-            else if (answer == 8)
-            {
-
-            }
-            else if (answer == 9)
-            {
-
-            }
-            else if (answer == 10)
-            {
-
-            }
-            else if (answer == 11)
-            {
-
-            }
-            else if (answer == 12)
-            {
-
-            }
-            else if (answer == 13)
-            {
-
-            }
-            else if (answer == 14)
-            {
-
-            }
-            else if (answer == 15)
-            {
-                foreach (KeyValuePair<string, int> kvp in lastbook)
-                {
-                    Console.WriteLine("Author's name : {0,-20} || || The year it was published : {1,-20}",
-                        kvp.Key, kvp.Value);
-                }
-            }
-            else if (answer == 16)
-            {
-
-            }
-            else if (answer == 17)
-            {
-
-            }
-            else
-            {
-                Console.WriteLine("error, jo szam kell");
-            }
 
 
 
