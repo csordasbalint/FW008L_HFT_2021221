@@ -62,5 +62,15 @@ namespace FW008L_HFT_2021221.Logic
         //=================================================================================================
 
 
+
+        //=================================================================================================
+        //noncrud for testing
+        public IQueryable<int> OldestBorrower()
+        {
+            return personRepo.ReadAll().Where(x => x.Nationality.ToLower().Contains("german") || x.Nationality.ToLower().Contains("austrian")).Select(x => x.Age);
+        }
+        //=================================================================================================
+
+
     }
 }
