@@ -29,10 +29,14 @@ namespace FW008L_HFT_2021221.Test
             Writer writer1 = new Writer();
             writer1.Writer_Id = 1;
             writer1.Name = "George Orwell";
+            writer1.Nationality = "English";
+            writer1.Age = 46;
 
             Writer writer2 = new Writer();
             writer2.Writer_Id = 2;
             writer2.Name = "Edd China";
+            writer2.Nationality = "Welsh";
+            writer2.Age = 50;
 
 
             Person person1 = new Person();
@@ -196,7 +200,22 @@ namespace FW008L_HFT_2021221.Test
         }
 
 
+        [Test]
+        public void OldestWriterTest()
+        {
+            var result = wl.OldestWriter();
 
+            Assert.That(result, Is.EqualTo(50));
+        }
+
+
+        [Test]
+        public void OldestBorrower()
+        {
+            var result = pl.OldestBorrower();
+        
+            Assert.That(result, Is.EqualTo(25));
+        }
 
 
 

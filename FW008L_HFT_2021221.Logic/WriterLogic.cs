@@ -70,9 +70,9 @@ namespace FW008L_HFT_2021221.Logic
 
         //=================================================================================================
         //noncrud for testing
-        public IQueryable<int> OldestEnglishWriter()
+        public int OldestWriter()
         {
-            return writerRepo.ReadAll().Where(x => x.Nationality.ToLower().Contains("american") || x.Nationality.ToLower().Contains("english")).Select(x=>x.Age);
+            return writerRepo.ReadAll().Max(x => x.Age);
         }
         //=================================================================================================
 
