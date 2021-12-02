@@ -37,13 +37,13 @@ namespace FW008L_HFT_2021221.Data
                 .HasOne(book => book.Writer)
                 .WithMany(writer => writer.Books)
                 .HasForeignKey(book => book.Writer_Id)
-                .OnDelete(DeleteBehavior.Restrict);
+                .OnDelete(DeleteBehavior.Cascade);
 
                 entity
                .HasOne(book => book.Person)
                .WithMany(person => person.Books)
                .HasForeignKey(book => book.Person_Id)
-               .OnDelete(DeleteBehavior.Restrict);
+               .OnDelete(DeleteBehavior.Cascade);
             });
 
 
@@ -169,7 +169,7 @@ namespace FW008L_HFT_2021221.Data
             Book franz5 = new Book() { Book_Id = 55, Title = "Metamorphosis", Published = 1915, Genre = "Allegorical novel", Writer_Id = franzKafka.Writer_Id, Person_Id = ras.Person_Id };
             Book franz6 = new Book() { Book_Id = 56, Title = "Before the Law", Published = 1915, Genre = "Parable", Writer_Id = franzKafka.Writer_Id, Person_Id = flamur.Person_Id };
 
-            Book james1 = new Book() { Book_Id = 57, Title = " A Portrait of the Artist as a Young Man", Published = 1916, Genre = "Novel", Writer_Id = jamesJoyce.Writer_Id, Person_Id = null };
+            Book james1 = new Book() { Book_Id = 57, Title = "A Portrait of the Artist as a Young Man", Published = 1916, Genre = "Novel", Writer_Id = jamesJoyce.Writer_Id, Person_Id = null };
             Book james2 = new Book() { Book_Id = 58, Title = "Ulysses", Published = 1922, Genre = "Novel", Writer_Id = jamesJoyce.Writer_Id, Person_Id = ras.Person_Id };
             Book james3 = new Book() { Book_Id = 59, Title = "Stephen Hero", Published = 1944, Genre = "Novel", Writer_Id = jamesJoyce.Writer_Id, Person_Id = jesper.Person_Id };
             Book james4 = new Book() { Book_Id = 60, Title = "Finnegans Wake", Published = 1939, Genre = "Novel", Writer_Id = jamesJoyce.Writer_Id, Person_Id = sumiko.Person_Id };
