@@ -13,18 +13,6 @@ namespace FW008L_HFT_2021221.Client
 
             RestService rest = new RestService("http://localhost:48920");  //base url copied from launchSettings.json file
 
-            //TESZT-----------------------------------------------------------------------
-
-            //rest.Post<Person>(new Person() 
-            //{
-            //    Name = "Testing Ted",
-            //    Nationality = "Spanish",
-            //    Age = 35,
-
-            //}, "person");
-
-            //TESZT-----------------------------------------------------------------------
-
 
             #region userinterface
             Console.Title = "Lukste Library";
@@ -106,51 +94,169 @@ namespace FW008L_HFT_2021221.Client
 
                     case "4":
 
-                        rest.Post<Book>(new Book()
-                        {
-                           
+                        Console.WriteLine("First of all, enter the title of the book!");
+                        string title1 = Console.ReadLine();
 
+                        Console.WriteLine("Next, enter the year when it was published!");
+                        int pub1 = int.Parse(Console.ReadLine());
+
+                        Console.WriteLine("Next, please enter the genre of the book!");
+                        string genre1 = Console.ReadLine();
+
+                        Console.WriteLine("Next, please enter the ID of a writer, who wrote this book!");
+                        int writerId1 = int.Parse(Console.ReadLine());
+
+                        Console.WriteLine("Last thing to do, please enter the ID of a person, who borrowed this book!");
+                        int personId1 = int.Parse(Console.ReadLine());
+
+
+                        rest.Post(new Book()
+                        {
+                            Title = title1,
+                            Published = pub1,
+                            Genre = genre1,
+                            Writer_Id = writerId1,
+                            Person_Id = personId1
                         }, "book");
+
+                        Console.WriteLine("You have successfully added the book!");
 
                         break;
 
 
                     case "5":
 
-                        rest.Post<Person>(new Person()
+                        Console.WriteLine("First of all, please enter the name of the person!");
+                        string person_name1 = Console.ReadLine();
+
+                        Console.WriteLine("Next, please enter the age of the person!");
+                        int person_age1 = int.Parse(Console.ReadLine());
+
+                        Console.WriteLine("Last thing to do, please enter the nationality of the person!");
+                        string person_nat1 = Console.ReadLine();
+
+                        rest.Post(new Person()
                         {
-
-
+                            Name = person_name1,
+                            Age = person_age1,
+                            Nationality = person_nat1
                         }, "person");
+
+                        Console.WriteLine("You have successfully created the person's data!");
 
                         break;
 
 
                     case "6":
 
-                        rest.Post<Writer>(new Writer()
+                        Console.WriteLine("First of all, please enter the name of the writer!");
+                        string writer_name1= Console.ReadLine();
+
+                        Console.WriteLine("Next, please enter the age of the writer!");
+                        int writer_age1 = int.Parse(Console.ReadLine());
+
+                        Console.WriteLine("Last thing to do, please enter the nationality of the writer!");
+                        string writer_nat1 = Console.ReadLine();
+
+                        rest.Post(new Writer()
                         {
-
-
+                            Name = writer_name1,
+                            Age = writer_age1,
+                            Nationality = writer_nat1
                         }, "writer");
+
+                        Console.WriteLine("You have successfully created the writer's data!");
 
                         break;
 
 
                     case "7":
-                        
-                        //book put
+
+                        Console.WriteLine("First of all, please enter the ID of the book which you want to update!");
+                        int bookOwnId2 = int.Parse(Console.ReadLine());
+
+                        Console.WriteLine("Next, enter the title of the book!");
+                        string title2 = Console.ReadLine();
+
+                        Console.WriteLine("Next, enter the year when it was published!");
+                        int pub2 = int.Parse(Console.ReadLine());
+
+                        Console.WriteLine("Next, please enter the genre of the book!");
+                        string genre2 = Console.ReadLine();
+
+                        Console.WriteLine("Next, please enter the ID of a writer, who wrote this book!");
+                        int writerId2 = int.Parse(Console.ReadLine());
+
+                        Console.WriteLine("Last thing to do, please enter the ID of a person, who borrowed this book!");
+                        int personId2 = int.Parse(Console.ReadLine());
+
+
+                        rest.Put(new Book()
+                        {
+                            Book_Id = bookOwnId2,
+                            Title = title2,
+                            Published = pub2,
+                            Genre = genre2,
+                            Writer_Id = writerId2,
+                            Person_Id = personId2              
+                        }, "book");
+
+                        Console.WriteLine("You have successfully updated the book!");
 
                         break;
 
 
                     case "8":
-                        //person put 
+
+                        Console.WriteLine("First of all, please enter the ID of the person whose data you want to update!");
+                        int personOwnId2 = int.Parse(Console.ReadLine());
+
+                        Console.WriteLine("Next, please enter the name of the person!");
+                        string person_name2 = Console.ReadLine();
+
+                        Console.WriteLine("Next, please enter the age of the person!");
+                        int person_age2 = int.Parse(Console.ReadLine());
+
+                        Console.WriteLine("Last thing to do, please enter the nationality of the person!");
+                        string person_nat2 = Console.ReadLine();
+
+                        rest.Put(new Person()
+                        {
+                            Person_Id = personOwnId2,
+                            Name = person_name2,
+                            Age = person_age2,
+                            Nationality = person_nat2
+                        }, "person");
+
+                        Console.WriteLine("You have successfully updated the person's data!");
+
                         break;
 
 
                     case "9":
-                        //writer put 
+
+                        Console.WriteLine("First of all, please enter the ID of the writer whose data you want to update!");
+                        int writerOwnId2 = int.Parse(Console.ReadLine());
+
+                        Console.WriteLine("Next, please enter the name of the writer!");
+                        string writer_name2 = Console.ReadLine();
+
+                        Console.WriteLine("Next, please enter the age of the writer!");
+                        int writer_age2 = int.Parse(Console.ReadLine());
+
+                        Console.WriteLine("Last thing to do, please enter the nationality of the writer!");
+                        string writer_nat2 = Console.ReadLine();
+
+                        rest.Put(new Writer()
+                        {
+                            Writer_Id = writerOwnId2,
+                            Name = writer_name2,
+                            Age = writer_age2,
+                            Nationality = writer_nat2
+                        }, "writer");
+
+                        Console.WriteLine("You have successfully updated the writer's data!");
+
                         break;
 
 

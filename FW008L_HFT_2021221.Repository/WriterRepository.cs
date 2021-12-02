@@ -46,6 +46,7 @@ namespace FW008L_HFT_2021221.Repository
             oldWriter.Name = writer.Name;
             oldWriter.Age = writer.Age;
             oldWriter.Nationality = writer.Nationality;
+            db.SaveChanges();
         }
     }
 }

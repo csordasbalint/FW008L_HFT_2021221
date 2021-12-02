@@ -46,6 +46,7 @@ namespace FW008L_HFT_2021221.Repository
             oldPerson.Name = person.Name;
             oldPerson.Age = person.Age;
             oldPerson.Nationality = person.Nationality;
+            db.SaveChanges();
         }
 
     }
