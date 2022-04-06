@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,9 +13,33 @@ namespace FW008L_HFT_2021221.Client
         HttpClient client;
 
 
-        public RestService(string baseurl)
+        //public RestService(string baseurl)
+        //{
+        //    Init(baseurl);
+        //}
+
+        public RestService(string baseurl, string pingableEndpoint = "swagger")
         {
+            bool isOk = false;
+            do
+            {
+                isOk = Ping(baseurl + pingableEndpoint);
+            } while (isOk == false);
             Init(baseurl);
+        }
+
+        private bool Ping(string url)
+        {
+            try
+            {
+                WebClient wc = new WebClient();
+                wc.DownloadData(url);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
         }
 
 
