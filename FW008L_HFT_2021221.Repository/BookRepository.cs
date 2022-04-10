@@ -50,17 +50,10 @@ namespace FW008L_HFT_2021221.Repository
             //oldBook.Person_Id = book.Person_Id;
             //db.SaveChanges();
 
-            var old = Read(book.Book_Id);
-            if (old == null)
+            var oldBook = Read(book.Book_Id);
+            foreach (var prop in oldBook.GetType().GetProperties())
             {
-                throw new ArgumentException("Item not exist..");
-            }
-            foreach (var prop in old.GetType().GetProperties())
-            {
-                if (prop.GetAccessors().FirstOrDefault(t => t.IsVirtual) == null)
-                {
-                    prop.SetValue(old, prop.GetValue(book));
-                }
+                prop.SetValue(oldBook, prop.GetValue(book));
             }
             db.SaveChanges();
 
