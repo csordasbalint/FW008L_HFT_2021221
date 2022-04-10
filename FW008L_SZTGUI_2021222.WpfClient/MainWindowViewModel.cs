@@ -64,7 +64,9 @@ namespace FW008L_SZTGUI_2021222.WpfClient
                 {
                     Books.Add(new Book()
                     {
-                        Title = selectedBook.Title,
+                        Title = SelectedBook.Title,
+                        Published = SelectedBook.Published,
+                        Genre = SelectedBook.Genre,
                         Person_Id = null,
                         Writer_Id = 1
                     });
@@ -72,12 +74,12 @@ namespace FW008L_SZTGUI_2021222.WpfClient
 
                 UpdateBookCommand = new RelayCommand(() =>
                 {
-                    Books.Update(selectedBook);
+                    Books.Update(SelectedBook);
                 });
 
                 DeleteBookCommand = new RelayCommand(() =>
                 {
-                    Books.Delete(selectedBook.Book_Id);
+                    Books.Delete(SelectedBook.Book_Id);
                 },
                 () =>
                 {
