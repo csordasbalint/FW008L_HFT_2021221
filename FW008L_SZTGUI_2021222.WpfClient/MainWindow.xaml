@@ -32,6 +32,8 @@
             <Label Content="Genre" Background="LightBlue" Padding="10"/>
             <TextBox Text="{Binding SelectedBook.Genre}" Padding="10" Margin="0,0,0,20"/>
 
+            <Label Content="Writer_id" Background="LightBlue" Padding="10"/>
+            <TextBox Text="{Binding SelectedBook.Writer_Id}" Padding="10" Margin="0,0,0,20"/>
 
             <Button Content="Create Book" Command="{Binding CreateBookCommand}" Margin="5" Padding="3"/>
             <Button Content="Update Book" Command="{Binding UpdateBookCommand}" Margin="5" Padding="3"/>

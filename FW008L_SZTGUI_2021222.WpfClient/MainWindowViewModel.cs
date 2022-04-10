@@ -16,7 +16,6 @@ namespace FW008L_SZTGUI_2021222.WpfClient
     {
         public RestCollection<Book> Books { get; set; }
 
-
         private Book selectedBook;
         public Book SelectedBook
         {
@@ -27,11 +26,14 @@ namespace FW008L_SZTGUI_2021222.WpfClient
                 {
                     selectedBook = new Book()
                     {
+                        Book_Id = value.Book_Id, //ez kell DELETE miatt
                         Title = value.Title,
                         Published = value.Published,
                         Genre = value.Genre,
-                        Person_Id = null,
-                        Writer_Id = 1
+                        Person = value.Person,
+                        Person_Id = value.Person_Id,
+                        Writer = value.Writer,
+                        Writer_Id = value.Writer_Id
                     };
                     OnPropertyChanged();
                     (DeleteBookCommand as RelayCommand).NotifyCanExecuteChanged();
@@ -68,7 +70,7 @@ namespace FW008L_SZTGUI_2021222.WpfClient
                         Published = SelectedBook.Published,
                         Genre = SelectedBook.Genre,
                         Person_Id = null,
-                        Writer_Id = 1
+                        Writer_Id = SelectedBook.Writer_Id
                     });
                 });
 
