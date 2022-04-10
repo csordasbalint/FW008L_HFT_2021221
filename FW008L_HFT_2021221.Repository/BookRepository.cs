@@ -42,13 +42,28 @@ namespace FW008L_HFT_2021221.Repository
 
         public void Update(Book book)
         {
-            var oldBook = Read(book.Book_Id);
-            oldBook.Title = book.Title;
-            oldBook.Published = book.Published;
-            oldBook.Genre = book.Genre;
-            oldBook.Writer_Id = book.Writer_Id;
-            oldBook.Person_Id = book.Person_Id;
+            //var oldBook = Read(book.Book_Id);
+            //oldBook.Title = book.Title;
+            //oldBook.Published = book.Published;
+            //oldBook.Genre = book.Genre;
+            //oldBook.Writer_Id = book.Writer_Id;
+            //oldBook.Person_Id = book.Person_Id;
+            //db.SaveChanges();
+
+            var old = Read(book.Book_Id);
+            if (old == null)
+            {
+                throw new ArgumentException("Item not exist..");
+            }
+            foreach (var prop in old.GetType().GetProperties())
+            {
+                if (prop.GetAccessors().FirstOrDefault(t => t.IsVirtual) == null)
+                {
+                    prop.SetValue(old, prop.GetValue(book));
+                }
+            }
             db.SaveChanges();
+
         }
 
 
