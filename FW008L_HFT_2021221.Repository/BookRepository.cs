@@ -42,20 +42,22 @@ namespace FW008L_HFT_2021221.Repository
 
         public void Update(Book book)
         {
-            //var oldBook = Read(book.Book_Id);
-            //oldBook.Title = book.Title;
-            //oldBook.Published = book.Published;
-            //oldBook.Genre = book.Genre;
-            //oldBook.Writer_Id = book.Writer_Id;
-            //oldBook.Person_Id = book.Person_Id;
-            //db.SaveChanges();
-
             var oldBook = Read(book.Book_Id);
-            foreach (var prop in oldBook.GetType().GetProperties())
-            {
-                prop.SetValue(oldBook, prop.GetValue(book));
-            }
+            oldBook.Title = book.Title;
+            oldBook.Published = book.Published;
+            oldBook.Genre = book.Genre;
+            oldBook.Writer_Id = book.Writer_Id;
+            //oldBook.Writer = book.Writer;
+            //oldBook.Person = book.Person;
+            oldBook.Person_Id = book.Person_Id;
             db.SaveChanges();
+
+            //var oldBook = Read(book.Book_Id);
+            //foreach (var prop in oldBook.GetType().GetProperties())
+            //{
+            //    prop.SetValue(oldBook, prop.GetValue(book));
+            //}
+            //db.SaveChanges();
 
         }
 
