@@ -10,20 +10,14 @@
         <local:MainWindowViewModel />
     </Window.DataContext>
     <Grid x:Name="OutsideGrid">
-        
-        <!--<Grid.ColumnDefinitions>
-            <ColumnDefinition Width="1*"/>
-            <ColumnDefinition Width="1*"/>
-        </Grid.ColumnDefinitions>-->
-        
         <TabControl>
             <TabItem Header="Books">
-
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="1*"/>
                         <ColumnDefinition Width="1*"/>
                     </Grid.ColumnDefinitions>
+                    
                     <ListBox ItemsSource="{Binding Books}" SelectedItem="{Binding SelectedBook}" Grid.Column="0">
                         <ListBox.ItemTemplate>
                             <DataTemplate>
@@ -53,23 +47,68 @@
             </TabItem>
 
             <TabItem Header="Writers">
-                <ListBox ItemsSource="{Binding Writers}" SelectedItem="{Binding SelectedWriter}" Grid.Column="0">
-                    <ListBox.ItemTemplate>
-                        <DataTemplate>
-                            <Label Content="{Binding Name}" />
-                        </DataTemplate>
-                    </ListBox.ItemTemplate>
-                </ListBox>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
+                    
+                    <ListBox ItemsSource="{Binding Writers}" SelectedItem="{Binding SelectedWriter}" Grid.Column="0">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <Label Content="{Binding Name}" />
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+
+                    <StackPanel Grid.Column="1">
+                        <Label Content="Name" Background="LightBlue" Padding="10"/>
+                        <TextBox Text="{Binding SelectedWriter.Name}" Padding="10" Margin="0,0,0,20"/>
+
+                        <Label Content="Age" Background="LightBlue" Padding="10"/>
+                        <TextBox Text="{Binding SelectedWriter.Age}" Padding="10" Margin="0,0,0,20"/>
+
+                        <Label Content="Nationality" Background="LightBlue" Padding="10"/>
+                        <TextBox Text="{Binding SelectedWriter.Nationality}" Padding="10" Margin="0,0,0,20"/>
+
+                        <Button Content="Create Writer" Command="{Binding CreateWriterCommand}" Margin="5" Padding="3"/>
+                        <Button Content="Update Writer" Command="{Binding UpdateWriterCommand}" Margin="5" Padding="3"/>
+                        <Button Content="Delete Writer" Command="{Binding DeleteWriterCommand}" Margin="5" Padding="3"/>
+                    </StackPanel>
+                </Grid>
             </TabItem>
 
             <TabItem Header="People">
-                <ListBox ItemsSource="{Binding People}" SelectedItem="{Binding SelectedPerson}" Grid.Column="0">
-                    <ListBox.ItemTemplate>
-                        <DataTemplate>
-                            <Label Content="{Binding Name}" />
-                        </DataTemplate>
-                    </ListBox.ItemTemplate>
-                </ListBox>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
+                    
+                    <ListBox ItemsSource="{Binding People}" SelectedItem="{Binding SelectedPerson}" Grid.Column="0">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <Label Content="{Binding Name}" />
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+
+                    <StackPanel Grid.Column="1">
+                        <Label Content="Name" Background="LightBlue" Padding="10"/>
+                        <TextBox Text="{Binding SelectedPerson.Name}" Padding="10" Margin="0,0,0,20"/>
+
+                        <Label Content="Age" Background="LightBlue" Padding="10"/>
+                        <TextBox Text="{Binding SelectedPerson.Age}" Padding="10" Margin="0,0,0,20"/>
+
+                        <Label Content="Nationality" Background="LightBlue" Padding="10"/>
+                        <TextBox Text="{Binding SelectedPerson.Nationality}" Padding="10" Margin="0,0,0,20"/>
+
+                        <Button Content="Create Person" Command="{Binding CreatePersonCommand}" Margin="5" Padding="3"/>
+                        <Button Content="Update Person" Command="{Binding UpdatePersonCommand}" Margin="5" Padding="3"/>
+                        <Button Content="Delete Person" Command="{Binding DeletePersonCommand}" Margin="5" Padding="3"/>
+                    </StackPanel>                    
+                
+                </Grid>
             </TabItem>
             
         </TabControl>

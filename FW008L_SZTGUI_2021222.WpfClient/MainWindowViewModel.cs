@@ -164,7 +164,7 @@ namespace FW008L_SZTGUI_2021222.WpfClient
                         Name = SelectedWriter.Name,
                         Age = SelectedWriter.Age,
                         Nationality = SelectedWriter.Nationality,
-                        Books = SelectedWriter.Books
+                        //Books = SelectedWriter.Books
                     });
                 });
 
@@ -192,7 +192,7 @@ namespace FW008L_SZTGUI_2021222.WpfClient
                         Name = SelectedPerson.Name,
                         Age = SelectedPerson.Age,
                         Nationality = SelectedPerson.Nationality,
-                        Books = SelectedPerson.Books
+                        //Books = SelectedPerson.Books
                     });
                 });
 
