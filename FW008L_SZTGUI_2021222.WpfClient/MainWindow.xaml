@@ -9,35 +9,70 @@
     <Window.DataContext>
         <local:MainWindowViewModel />
     </Window.DataContext>
-    <Grid>
-        <Grid.ColumnDefinitions>
+    <Grid x:Name="OutsideGrid">
+        
+        <!--<Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"/>
             <ColumnDefinition Width="1*"/>
-        </Grid.ColumnDefinitions>
+        </Grid.ColumnDefinitions>-->
+        
+        <TabControl>
+            <TabItem Header="Books">
 
-        <ListBox ItemsSource="{Binding Books}" SelectedItem="{Binding SelectedBook}">
-            <ListBox.ItemTemplate>
-                <DataTemplate>
-                    <Label Content="{Binding Title}" />
-                </DataTemplate>
-            </ListBox.ItemTemplate>
-        </ListBox>
-        <StackPanel Grid.Column="1">
-            <Label Content="Title" Background="LightBlue" Padding="10"/>
-            <TextBox Text="{Binding SelectedBook.Title}" Padding="10" Margin="0,0,0,20"/>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
+                    <ListBox ItemsSource="{Binding Books}" SelectedItem="{Binding SelectedBook}" Grid.Column="0">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <Label Content="{Binding Title}" />
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
 
-            <Label Content="Published" Background="LightBlue" Padding="10"/>
-            <TextBox Text="{Binding SelectedBook.Published}" Padding="10" Margin="0,0,0,20"/>
+                    <StackPanel Grid.Column="1">
+                        <Label Content="Title" Background="LightBlue" Padding="10"/>
+                        <TextBox Text="{Binding SelectedBook.Title}" Padding="10" Margin="0,0,0,20"/>
 
-            <Label Content="Genre" Background="LightBlue" Padding="10"/>
-            <TextBox Text="{Binding SelectedBook.Genre}" Padding="10" Margin="0,0,0,20"/>
+                        <Label Content="Published" Background="LightBlue" Padding="10"/>
+                        <TextBox Text="{Binding SelectedBook.Published}" Padding="10" Margin="0,0,0,20"/>
 
-            <Label Content="Writer_id" Background="LightBlue" Padding="10"/>
-            <TextBox Text="{Binding SelectedBook.Writer_Id}" Padding="10" Margin="0,0,0,20"/>
+                        <Label Content="Genre" Background="LightBlue" Padding="10"/>
+                        <TextBox Text="{Binding SelectedBook.Genre}" Padding="10" Margin="0,0,0,20"/>
 
-            <Button Content="Create Book" Command="{Binding CreateBookCommand}" Margin="5" Padding="3"/>
-            <Button Content="Update Book" Command="{Binding UpdateBookCommand}" Margin="5" Padding="3"/>
-            <Button Content="Delete Book" Command="{Binding DeleteBookCommand}" Margin="5" Padding="3"/>
-        </StackPanel>
+                        <Label Content="Writer_id" Background="LightBlue" Padding="10"/>
+                        <TextBox Text="{Binding SelectedBook.Writer_Id}" Padding="10" Margin="0,0,0,20"/>
+
+                        <Button Content="Create Book" Command="{Binding CreateBookCommand}" Margin="5" Padding="3"/>
+                        <Button Content="Update Book" Command="{Binding UpdateBookCommand}" Margin="5" Padding="3"/>
+                        <Button Content="Delete Book" Command="{Binding DeleteBookCommand}" Margin="5" Padding="3"/>
+                    </StackPanel>
+                </Grid>
+            </TabItem>
+
+            <TabItem Header="Writers">
+                <ListBox ItemsSource="{Binding Writers}" SelectedItem="{Binding SelectedWriter}" Grid.Column="0">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <Label Content="{Binding Name}" />
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </TabItem>
+
+            <TabItem Header="People">
+                <ListBox ItemsSource="{Binding People}" SelectedItem="{Binding SelectedPerson}" Grid.Column="0">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <Label Content="{Binding Name}" />
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </TabItem>
+            
+        </TabControl>
+        
     </Grid>
 </Window>
