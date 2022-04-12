@@ -1,4 +1,5 @@
-﻿using FW008L_HFT_2021221.Models;
+﻿using FW008L_HFT_2021221.Logic;
+using FW008L_HFT_2021221.Models;
 using Microsoft.Toolkit.Mvvm.ComponentModel;
 using Microsoft.Toolkit.Mvvm.Input;
 using System;
@@ -14,6 +15,11 @@ namespace FW008L_SZTGUI_2021222.WpfClient
 {
     public class MainWindowViewModel : ObservableRecipient
     {
+        IBookLogic bl;
+        IWriterLogic wl;
+        IPersonLogic pl;
+
+
         //restcollections 
         public RestCollection<Book> Books { get; set; }
         public RestCollection<Writer> Writers { get; set; }
@@ -22,6 +28,16 @@ namespace FW008L_SZTGUI_2021222.WpfClient
         private Book selectedBook;
         private Writer selectedWriter;
         private Person selectedPerson;
+
+        //public IEnumerable<KeyValuePair<string, int>> Autosw
+        //{
+        //    get
+        //    {
+        //        return (IEnumerable<KeyValuePair<string, int>>)bl.AutobiographiesByTitle();
+        //    }
+        //}
+
+
 
         public Book SelectedBook
         {
