@@ -1,6 +1,8 @@
-﻿using FW008L_HFT_2021221.Logic;
+﻿using FW008L_HFT_2021221.Endpoint.Services;
+using FW008L_HFT_2021221.Logic;
 using FW008L_HFT_2021221.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.SignalR;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,10 +17,12 @@ namespace FW008L_HFT_2021221.Endpoint.Controllers
     public class WriterController : ControllerBase
     {
         IWriterLogic wl;
+        IHubContext<SignalRHub> hub;
 
-        public WriterController(IWriterLogic wl)
+        public WriterController(IWriterLogic wl, IHubContext<SignalRHub> hub)
         {
             this.wl = wl;
+            this.hub = hub;
         }
 
 
@@ -43,6 +47,7 @@ namespace FW008L_HFT_2021221.Endpoint.Controllers
         public void Post([FromBody] Writer value)
         {
             wl.Create(value);
+            this.hub.Clients.All.SendAsync("WriterCreated", value);
         }
 
 
@@ -51,6 +56,7 @@ namespace FW008L_HFT_2021221.Endpoint.Controllers
         public void Put([FromBody] Writer value)
         {
             wl.Update(value);
+            this.hub.Clients.All.SendAsync("WriterUpdated", value);
         }
 
 
@@ -58,7 +64,9 @@ namespace FW008L_HFT_2021221.Endpoint.Controllers
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
+            var writerToDelete = wl.Read(id);
             wl.Delete(id);
+            this.hub.Clients.All.SendAsync("WriterDeleted", writerToDelete);
         }
     }
 }
