@@ -1,5 +1,6 @@
 //using Castle.Core.Configuration;
 using FW008L_HFT_2021221.Data;
+using FW008L_HFT_2021221.Endpoint.Services;
 using FW008L_HFT_2021221.Logic;
 using FW008L_HFT_2021221.Repository;
 using Microsoft.AspNetCore.Builder;
@@ -39,6 +40,7 @@ namespace FW008L_HFT_2021221.Endpoint
             services.AddTransient<IPersonLogic, PersonLogic>();
             services.AddTransient<IWriterLogic, WriterLogic>();
 
+            services.AddSignalR();
 
             services.AddControllers();
             services.AddSwaggerGen(c =>
@@ -75,6 +77,7 @@ namespace FW008L_HFT_2021221.Endpoint
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+                endpoints.MapHub<SignalRHub>("/hub");
             });
         }
 
