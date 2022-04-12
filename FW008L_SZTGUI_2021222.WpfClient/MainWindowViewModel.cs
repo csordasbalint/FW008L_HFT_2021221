@@ -139,9 +139,9 @@ namespace FW008L_SZTGUI_2021222.WpfClient
         {
             if (!IsInDesignMode)
             {
-                Books = new RestCollection<Book>("http://localhost:48920/", "book");
-                Writers = new RestCollection<Writer>("http://localhost:48920/", "writer");
-                People = new RestCollection<Person>("http://localhost:48920/", "person");
+                Books = new RestCollection<Book>("http://localhost:48920/", "book", "hub");
+                Writers = new RestCollection<Writer>("http://localhost:48920/", "writer", "hub");
+                People = new RestCollection<Person>("http://localhost:48920/", "person", "hub");
 
                 //commands for books
                 CreateBookCommand = new RelayCommand(() =>

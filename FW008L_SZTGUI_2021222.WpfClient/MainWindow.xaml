@@ -6,6 +6,65 @@
         xmlns:local="clr-namespace:FW008L_SZTGUI_2021222.WpfClient"
         mc:Ignorable="d"
         Title="Editor" Height="450" Width="800">
+    <Window.Resources>
+        <Style x:Key="FocusVisual">
+            <Setter Property="Control.Template">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <Rectangle Margin="2" StrokeDashArray="1 2" SnapsToDevicePixels="true" StrokeThickness="1" Stroke="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <SolidColorBrush x:Key="Button.Static.Background" Color="#FFDDDDDD"/>
+        <SolidColorBrush x:Key="Button.Static.Border" Color="#FF707070"/>
+        <SolidColorBrush x:Key="Button.MouseOver.Background" Color="#FFBEE6FD"/>
+        <SolidColorBrush x:Key="Button.MouseOver.Border" Color="#FF3C7FB1"/>
+        <SolidColorBrush x:Key="Button.Pressed.Background" Color="#FFC4E5F6"/>
+        <SolidColorBrush x:Key="Button.Pressed.Border" Color="#FF2C628B"/>
+        <SolidColorBrush x:Key="Button.Disabled.Background" Color="#FFF4F4F4"/>
+        <SolidColorBrush x:Key="Button.Disabled.Border" Color="#FFADB2B5"/>
+        <SolidColorBrush x:Key="Button.Disabled.Foreground" Color="#FF838383"/>
+        <Style x:Key="RoundedButtonStyle" TargetType="{x:Type Button}">
+            <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
+            <Setter Property="Background" Value="{StaticResource Button.Static.Background}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource Button.Static.Border}"/>
+            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Padding" Value="1"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border x:Name="border" CornerRadius="20" Background="{TemplateBinding Background}" BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{TemplateBinding BorderBrush}" SnapsToDevicePixels="true">
+                            <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsDefaulted" Value="true">
+                                <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter Property="Background" TargetName="border" Value="#00008B"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="#00008B"/>
+                                <Setter Property="Foreground"  Value="#FFFFFF"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="true">
+                                <Setter Property="Background" TargetName="border" Value="#E8E821"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="#E8E821"/>
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="false">
+                                <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Disabled.Background}"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Disabled.Border}"/>
+                                <Setter Property="TextElement.Foreground" TargetName="contentPresenter" Value="{StaticResource Button.Disabled.Foreground}"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+    
     <Window.DataContext>
         <local:MainWindowViewModel />
     </Window.DataContext>
@@ -29,21 +88,21 @@
                     <StackPanel Grid.Column="1">
                         <!--<Label Content="{Binding Autosw}" />-->
 
-                        <Label Content="Title" Background="LightBlue" Padding="10"/>
-                        <TextBox Text="{Binding SelectedBook.Title}" Padding="10" Margin="0,0,0,20"/>
+                        <Label Content="Title" Foreground="White" Background="DarkBlue" Padding="10" FontSize="15" FontFamily="Arial"/>
+                        <TextBox Text="{Binding SelectedBook.Title}" Padding="10" Margin="0,0,0,20" FontSize="15" FontFamily="Arial"/>
 
-                        <Label Content="Published" Background="LightBlue" Padding="10"/>
-                        <TextBox Text="{Binding SelectedBook.Published}" Padding="10" Margin="0,0,0,20"/>
+                        <Label Content="Published" Foreground="White" Background="DarkBlue" Padding="10" FontSize="15" FontFamily="Arial"/>
+                        <TextBox Text="{Binding SelectedBook.Published}" Padding="10" Margin="0,0,0,20" FontSize="15" FontFamily="Arial"/>
 
-                        <Label Content="Genre" Background="LightBlue" Padding="10"/>
-                        <TextBox Text="{Binding SelectedBook.Genre}" Padding="10" Margin="0,0,0,20"/>
+                        <Label Content="Genre" Foreground="White" Background="DarkBlue" Padding="10" FontSize="15" FontFamily="Arial"/>
+                        <TextBox Text="{Binding SelectedBook.Genre}" Padding="10" Margin="0,0,0,20" FontSize="15" FontFamily="Arial"/>
 
-                        <Label Content="Writer_id" Background="LightBlue" Padding="10"/>
-                        <TextBox Text="{Binding SelectedBook.Writer_Id}" Padding="10" Margin="0,0,0,20"/>
+                        <Label Content="Writer id" Foreground="White" Background="DarkBlue" Padding="10" FontSize="15" FontFamily="Arial"/>
+                        <TextBox Text="{Binding SelectedBook.Writer_Id}" Padding="10" Margin="0,0,0,20" FontSize="15" FontFamily="Arial"/>
 
-                        <Button Content="Create Book" Command="{Binding CreateBookCommand}" Margin="5" Padding="3"/>
-                        <Button Content="Update Book" Command="{Binding UpdateBookCommand}" Margin="5" Padding="3"/>
-                        <Button Content="Delete Book" Command="{Binding DeleteBookCommand}" Margin="5" Padding="3"/>
+                        <Button Style="{DynamicResource RoundedButtonStyle}" Content="Create Book" Command="{Binding CreateBookCommand}" Margin="5" Padding="5" Width="140" Height="40" FontSize="15" FontFamily="Arial"/>
+                        <Button Style="{DynamicResource RoundedButtonStyle}" Content="Update Book" Command="{Binding UpdateBookCommand}" Margin="5" Padding="5" Width="140" Height="40" FontSize="15" FontFamily="Arial"/>
+                        <Button Style="{DynamicResource RoundedButtonStyle}" Content="Delete Book" Command="{Binding DeleteBookCommand}" Margin="5" Padding="5" Width="140" Height="40" FontSize="15" FontFamily="Arial"/>
                     </StackPanel>
                 </Grid>
             </TabItem>
@@ -64,18 +123,18 @@
                     </ListBox>
 
                     <StackPanel Grid.Column="1">
-                        <Label Content="Name" Background="LightBlue" Padding="10"/>
-                        <TextBox Text="{Binding SelectedWriter.Name}" Padding="10" Margin="0,0,0,20"/>
+                        <Label Content="Name" Foreground="White" Background="DarkBlue" Padding="10" FontSize="15" FontFamily="Arial"/>
+                        <TextBox Text="{Binding SelectedWriter.Name}" Padding="10" Margin="0,0,0,20" FontSize="15" FontFamily="Arial"/>
 
-                        <Label Content="Age" Background="LightBlue" Padding="10"/>
-                        <TextBox Text="{Binding SelectedWriter.Age}" Padding="10" Margin="0,0,0,20"/>
+                        <Label Content="Age" Foreground="White" Background="DarkBlue" Padding="10" FontSize="15" FontFamily="Arial"/>
+                        <TextBox Text="{Binding SelectedWriter.Age}" Padding="10" Margin="0,0,0,20" FontSize="15" FontFamily="Arial"/>
 
-                        <Label Content="Nationality" Background="LightBlue" Padding="10"/>
-                        <TextBox Text="{Binding SelectedWriter.Nationality}" Padding="10" Margin="0,0,0,20"/>
+                        <Label Content="Nationality" Foreground="White" Background="DarkBlue" Padding="10" FontSize="15" FontFamily="Arial"/>
+                        <TextBox Text="{Binding SelectedWriter.Nationality}" Padding="10" Margin="0,0,0,20" FontSize="15" FontFamily="Arial"/>
 
-                        <Button Content="Create Writer" Command="{Binding CreateWriterCommand}" Margin="5" Padding="3"/>
-                        <Button Content="Update Writer" Command="{Binding UpdateWriterCommand}" Margin="5" Padding="3"/>
-                        <Button Content="Delete Writer" Command="{Binding DeleteWriterCommand}" Margin="5" Padding="3"/>
+                        <Button Style="{DynamicResource RoundedButtonStyle}" Content="Create Writer" Command="{Binding CreateWriterCommand}" Margin="5" Padding="5" Width="140" Height="40" FontSize="15" FontFamily="Arial"/>
+                        <Button Style="{DynamicResource RoundedButtonStyle}" Content="Update Writer" Command="{Binding UpdateWriterCommand}" Margin="5" Padding="5" Width="140" Height="40" FontSize="15" FontFamily="Arial"/>
+                        <Button Style="{DynamicResource RoundedButtonStyle}" Content="Delete Writer" Command="{Binding DeleteWriterCommand}" Margin="5" Padding="5" Width="140" Height="40" FontSize="15" FontFamily="Arial"/>
                     </StackPanel>
                 </Grid>
             </TabItem>
@@ -96,18 +155,18 @@
                     </ListBox>
 
                     <StackPanel Grid.Column="1">
-                        <Label Content="Name" Background="LightBlue" Padding="10"/>
-                        <TextBox Text="{Binding SelectedPerson.Name}" Padding="10" Margin="0,0,0,20"/>
+                        <Label Content="Name" Foreground="White" Background="DarkBlue" Padding="10" FontSize="15" FontFamily="Arial"/>
+                        <TextBox Text="{Binding SelectedPerson.Name}" Padding="10" Margin="0,0,0,20" FontSize="15" FontFamily="Arial"/>
 
-                        <Label Content="Age" Background="LightBlue" Padding="10"/>
-                        <TextBox Text="{Binding SelectedPerson.Age}" Padding="10" Margin="0,0,0,20"/>
+                        <Label Content="Age" Foreground="White" Background="DarkBlue" Padding="10" FontSize="15" FontFamily="Arial"/>
+                        <TextBox Text="{Binding SelectedPerson.Age}" Padding="10" Margin="0,0,0,20" FontSize="15" FontFamily="Arial"/>
 
-                        <Label Content="Nationality" Background="LightBlue" Padding="10"/>
-                        <TextBox Text="{Binding SelectedPerson.Nationality}" Padding="10" Margin="0,0,0,20"/>
+                        <Label Content="Nationality" Foreground="White" Background="DarkBlue" Padding="10" FontSize="15" FontFamily="Arial"/>
+                        <TextBox Text="{Binding SelectedPerson.Nationality}" Padding="10" Margin="0,0,0,20" FontSize="15" FontFamily="Arial"/>
 
-                        <Button Content="Create Person" Command="{Binding CreatePersonCommand}" Margin="5" Padding="3"/>
-                        <Button Content="Update Person" Command="{Binding UpdatePersonCommand}" Margin="5" Padding="3"/>
-                        <Button Content="Delete Person" Command="{Binding DeletePersonCommand}" Margin="5" Padding="3"/>
+                        <Button Style="{DynamicResource RoundedButtonStyle}" Content="Create Person" Command="{Binding CreatePersonCommand}" Margin="5" Padding="5" Width="140" Height="40" FontSize="15" FontFamily="Arial"/>
+                        <Button Style="{DynamicResource RoundedButtonStyle}" Content="Update Person" Command="{Binding UpdatePersonCommand}" Margin="5" Padding="5" Width="140" Height="40" FontSize="15" FontFamily="Arial"/>
+                        <Button Style="{DynamicResource RoundedButtonStyle}" Content="Delete Person" Command="{Binding DeletePersonCommand}" Margin="5" Padding="5" Width="140" Height="40" FontSize="15" FontFamily="Arial"/>
                     </StackPanel>                    
                 
                 </Grid>
