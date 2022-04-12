@@ -1,6 +1,8 @@
-﻿using FW008L_HFT_2021221.Logic;
+﻿using FW008L_HFT_2021221.Endpoint.Services;
+using FW008L_HFT_2021221.Logic;
 using FW008L_HFT_2021221.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.SignalR;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,10 +18,12 @@ namespace FW008L_HFT_2021221.Endpoint.Controllers
     {
 
         IPersonLogic pl;
+        IHubContext<SignalRHub> hub;
 
-        public PersonController(IPersonLogic pl)
+        public PersonController(IPersonLogic pl, IHubContext<SignalRHub> hub)
         {
             this.pl = pl;
+            this.hub = hub;
         }
 
 
@@ -44,6 +48,7 @@ namespace FW008L_HFT_2021221.Endpoint.Controllers
         public void Post([FromBody] Person value)
         {
             pl.Create(value);
+            this.hub.Clients.All.SendAsync("PersonCreated", value);
         }
 
 
@@ -52,6 +57,7 @@ namespace FW008L_HFT_2021221.Endpoint.Controllers
         public void Put([FromBody] Person value)
         {
             pl.Update(value);
+            this.hub.Clients.All.SendAsync("PersonUpdated", value);
         }
 
 
@@ -59,7 +65,9 @@ namespace FW008L_HFT_2021221.Endpoint.Controllers
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
+            var personToDelete = pl.Read(id);
             pl.Delete(id);
+            this.hub.Clients.All.SendAsync("PersonDeleted", personToDelete);
         }
     }
 }
