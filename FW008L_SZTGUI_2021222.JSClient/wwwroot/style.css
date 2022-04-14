@@ -21,3 +21,22 @@ th
 }
 
 
+#formdiv
+{
+    display: flex;
+    flex-direction: column;
+}
+
+#formdiv
+{
+    width: 20%;
+    text-align: left;
+}
+
+#formdiv label, button, input 
+{
+    margin: 1px;
+    padding: 1px;
+}
+
+
