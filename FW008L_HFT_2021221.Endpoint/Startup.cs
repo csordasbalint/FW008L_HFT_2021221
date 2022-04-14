@@ -69,6 +69,11 @@ namespace FW008L_HFT_2021221.Endpoint
                 await context.Response.WriteAsJsonAsync(response);
             }));
 
+            app.UseCors(x => x
+                .AllowCredentials()
+                .AllowAnyMethod()
+                .AllowAnyHeader()
+                .WithOrigins("http://localhost:60033"));
 
             app.UseRouting();
 
