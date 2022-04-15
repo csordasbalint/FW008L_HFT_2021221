@@ -1,6 +1,7 @@
 ﻿let books = [];
-const connection;
+let connection = null;
 getdata();
+setupSignalR();
 
 function setupSignalR()
 {
@@ -11,8 +12,12 @@ function setupSignalR()
 
     connection.on("BookCreated", (user, message) =>
     {
-        console.log(user);
-        console.log(message);
+        getdata();
+    });
+
+    connection.on("BookDeleted", (user, message) =>
+    {
+        getdata();
     });
 
     connection.onclose(async () =>
@@ -44,7 +49,7 @@ async function getdata()
         .then(y =>
         {
             books = y;
-            console.log(books);
+            //console.log(books); not needed
             display()
         });
 }
