@@ -16,14 +16,35 @@ async function getdata()
 
 function display()
 {
+    document.getElementById('results').innerHTML = "";
     books.forEach(t =>
     {
         document.getElementById('results').innerHTML +=
             "<tr><td>" + t.book_Id + "</td><td>" + t.title +
             "</td><td>" + t.published + "</td><td>" + t.genre +
-            "</td><td>" + t.writer_Id + "</td><td>" + t.person_Id + "</td></tr>";
+            "</td><td>" + t.writer_Id + "</td><td>" + t.person_Id +
+            "</td> <td>" + `<button tpye="button" onclick="remove(${t.book_Id})">Delete </button>` +"</td> </tr>";
     });
 }
+
+
+function remove(id)
+{
+    fetch('http://localhost:48920/book/' + id,
+        {
+            method: 'DELETE',
+            headers: { 'Content-Type': 'application/json', },
+            body: null
+        })
+        .then(response => response)
+        .then(data =>
+        {
+            console.log('Success:', data);
+            getdata();
+        })
+        .catch((error) => { console.error('Error:', error); });
+}
+
 
 
 function create()
