@@ -50,10 +50,10 @@ function remove(id)
 function create()
 {
     let book_title = document.getElementById('title').value;
-    let book_published = document.getElementById('published').value;
+    let book_published = parseInt(document.getElementById('published').value);
     let book_genre = document.getElementById('genre').value;
-    let book_writer_Id = document.getElementById('writer_Id').value;
-    let book_person_Id = document.getElementById('person_Id').value;
+    let book_writer_Id = parseInt(document.getElementById('writer_Id').value);
+    let book_person_Id = parseInt(document.getElementById('person_Id').value);
 
     fetch('http://localhost:48920/book',
         {
@@ -69,7 +69,8 @@ function create()
                 })
         })
         .then(response => response)
-        .then(data => {
+        .then(data =>
+        {
             console.log('Success:', data);
             getdata();
         })
