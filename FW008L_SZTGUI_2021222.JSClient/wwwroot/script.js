@@ -1,5 +1,27 @@
 ﻿let books = [];
+const connection;
 getdata();
+
+function setupSignalR()
+{
+    const connection = new signalR.HubConnectionBuilder()
+        .withUrl("http://localhost:48920/hub")
+        .configureLogging(signalR.LogLevel.Information)
+        .build();
+
+    connection.on("BookCreated", (user, message) =>
+    {
+        console.log(user);
+        console.log(message);
+    });
+
+    connection.onclose(async () =>
+    {
+        await start();
+    });
+    start();
+}
+
 
 async function getdata()
 {
