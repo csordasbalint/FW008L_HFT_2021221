@@ -171,7 +171,22 @@
                 
                 </Grid>
             </TabItem>
-            
+
+            <TabItem Header="Stats">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
+
+
+                    <StackPanel Grid.Column="0">
+                        <Label HorizontalContentAlignment="Center" FontSize="14" Content="{Binding Autosw}"  />
+                    </StackPanel>
+
+                </Grid>
+            </TabItem>
+
         </TabControl>
         
     </Grid>
