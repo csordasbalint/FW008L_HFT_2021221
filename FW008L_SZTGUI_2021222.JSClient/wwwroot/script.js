@@ -78,8 +78,8 @@ function display()
             "<tr><td>" + t.book_Id + "</td><td>" + t.title +
             "</td><td>" + t.published + "</td><td>" + t.genre +
             "</td><td>" + t.writer_Id + "</td><td>" + t.person_Id +
-            "</td> <td>" + `<button tpye="button" onclick="remove(${t.book_Id})">Delete </button>` + "</td><td>"
-            + `<button tpye="button" onclick="update(${t.book_Id})">Update </button>` + "</td> </tr>";
+            "</td> <td>" + `<button tpye="button" onclick="remove(${t.book_Id})">Delete </button>` +
+            "</td> <td>"+ `<button tpye="button" onclick="update(${t.book_Id})">Update </button>` + "</td> </tr>";
     });
 }
 
@@ -115,7 +115,8 @@ function update()
     let book_genre = document.getElementById('genre').value;
     let book_writer_Id = parseInt(document.getElementById('writer_Id').value);
     let book_person_Id = parseInt(document.getElementById('person_Id').value);
-    fetch('http://localhost:48920/book' + id,
+    /*id kell vajon?*/
+    fetch('http://localhost:48920/book' + id, /*here / dunno*/
         {
             method: 'PUT',
             headers: { 'Content-Type': 'application/json', },
@@ -125,7 +126,8 @@ function update()
                     published: book_published,
                     genre: book_genre,
                     writer_Id: book_writer_Id,
-                    person_Id: book_person_Id
+                    person_Id: book_person_Id,
+                    id = book_Id /*this line dunno*/
                 })
         })
         .then(response => response)
@@ -145,9 +147,9 @@ function create()
     let book_writer_Id = parseInt(document.getElementById('writer_Id').value);
     let book_person_Id = parseInt(document.getElementById('person_Id').value);
 
-    fetch('http://localhost:48920/book',
+    fetch('http://localhost:48920/book', /*dunno if i need a / at the end*/
         {
-            method: 'POST',
+            method: 'POST', /*method must be post*/
             headers: { 'Content-Type': 'application/json', },
             body: JSON.stringify(
                 {
