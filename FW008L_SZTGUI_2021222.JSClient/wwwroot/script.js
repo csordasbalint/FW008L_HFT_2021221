@@ -95,6 +95,35 @@ function remove(id)
 }
 
 
+function update()
+{
+    let book_title = document.getElementById('title').value;
+    let book_published = parseInt(document.getElementById('published').value);
+    let book_genre = document.getElementById('genre').value;
+    let book_writer_Id = parseInt(document.getElementById('writer_Id').value);
+    let book_person_Id = parseInt(document.getElementById('person_Id').value);
+    fetch('http://localhost:48920/book' + id,
+        {
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json', },
+            body: JSON.stringify(
+                {
+                    title: book_title,
+                    published: book_published,
+                    genre: book_genre,
+                    writer_Id: book_writer_Id,
+                    person_Id: book_person_Id
+                })
+        })
+        .then(response => response)
+        .then(data => {
+            console.log('Success:', data);
+            getdata();
+        })
+        .catch((error) => { console.error('Error:', error); });
+}
+
+
 function create()
 {
     let book_title = document.getElementById('title').value;
