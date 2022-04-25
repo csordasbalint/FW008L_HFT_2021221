@@ -93,5 +93,16 @@ namespace FW008L_HFT_2021221.Logic
 
 
 
+        //added cruds
+        public int LatestPublishedBook()
+        {
+            return bookRepo.ReadAll().Max(t => t.Published);
+        }
+
+
+
+
+
+
     }
 }
