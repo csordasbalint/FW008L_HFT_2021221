@@ -21,6 +21,11 @@ function setupSignalR()
         getdata();
     });
 
+    connection.on("BookUpdated", (user, message) =>
+    {
+        getdata();
+    });
+
     connection.onclose(async () =>
     {
         await start();
@@ -62,16 +67,24 @@ function display()
     document.getElementById('results').innerHTML = "";
     books.forEach(t =>
     {
+        //document.getElementById('results').innerHTML +=
+        //    "<tr><td>" + t.book_Id + "</td><td>" + t.title +
+        //    "</td><td>" + t.published + "</td><td>" + t.genre +
+        //    "</td><td>" + t.writer_Id + "</td><td>" + t.person_Id +
+        //    "</td> <td>" + `<button tpye="button" onclick="remove(${t.book_Id})">Delete </button>` + "</td> </tr>";
+
+
         document.getElementById('results').innerHTML +=
             "<tr><td>" + t.book_Id + "</td><td>" + t.title +
             "</td><td>" + t.published + "</td><td>" + t.genre +
             "</td><td>" + t.writer_Id + "</td><td>" + t.person_Id +
-            "</td> <td>" + `<button tpye="button" onclick="remove(${t.book_Id})">Delete </button>` +"</td> </tr>";
+            "</td> <td>" + `<button tpye="button" onclick="remove(${t.book_Id})">Delete </button>` + "</td><td>"
+            + `<button tpye="button" onclick="update(${t.book_Id})">Update </button>` + "</td> </tr>";
     });
 }
 
 
-function displayForNunCruds()
+function displayForNonCruds()
 {
     
 }
