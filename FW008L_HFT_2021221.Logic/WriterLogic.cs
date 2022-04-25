@@ -77,6 +77,11 @@ namespace FW008L_HFT_2021221.Logic
         //=================================================================================================
 
 
+        public string YoungestWriter()
+        {
+            var result = writerRepo.ReadAll().OrderBy(x=>x.Age).First();
+            return result.Name;
+        }
 
 
     }
