@@ -71,6 +71,12 @@ function display()
 }
 
 
+function displayForNunCruds()
+{
+    
+}
+
+
 function remove(id)
 {
     fetch('http://localhost:48920/book/' + id,
