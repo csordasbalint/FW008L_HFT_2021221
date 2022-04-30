@@ -133,7 +133,6 @@ namespace FW008L_SZTGUI_2021222.WpfClient
         {
             if (!IsInDesignMode)
             {
-                //lehet kell valahova /-jel de faszom sem tudja és nincs időm erre
                 AutobiographiesByTitle = new RestCollection<KeyValuePair<string, string>>("http://localhost:48920/", "stat/autobiographiesByTitle","hub");
                 HowManyBooksDoTheyReadUnder18 = new RestCollection<KeyValuePair<string, int>>("http://localhost:48920/", "stat/howManyBooksDoTheyReadUnder18","hub");
                 LatestPublishedBooksByGeorges = new RestCollection<KeyValuePair<string, int>>("http://localhost:48920/", "stat/latestPublishedBooksByGeorges", "hub");
