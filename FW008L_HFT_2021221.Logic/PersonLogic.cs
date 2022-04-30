@@ -70,14 +70,5 @@ namespace FW008L_HFT_2021221.Logic
             return personRepo.ReadAll().Max(x => x.Age);
         }
         //=================================================================================================
-
-
-        //name of the person who borrowed the most books
-        public string WhoBorrowedTheMost()
-        {
-            return personRepo.ReadAll().OrderByDescending(x => x.Books.Count).Max(x => x.Name);
-        }
-
-
     }
 }

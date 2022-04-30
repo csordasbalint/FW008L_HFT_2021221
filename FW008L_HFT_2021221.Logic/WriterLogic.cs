@@ -75,14 +75,5 @@ namespace FW008L_HFT_2021221.Logic
             return writerRepo.ReadAll().Max(x => x.Age);
         }
         //=================================================================================================
-
-
-        public string YoungestWriter()
-        {
-            var result = writerRepo.ReadAll().OrderBy(x=>x.Age).First();
-            return result.Name;
-        }
-
-
     }
 }

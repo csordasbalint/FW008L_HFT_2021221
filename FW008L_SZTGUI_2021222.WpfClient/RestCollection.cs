@@ -318,12 +318,13 @@ namespace FW008L_SZTGUI_2021222.WpfClient
 
                 this.notify.Init();
             }
-            Init();
+            
+            Init((endpoint != type.Name ? endpoint : null));
         }
 
-        private async Task Init()
+        private async Task Init(string endpointOverride = "")
         {
-            items = await rest.GetAsync<T>(typeof(T).Name);
+            items = await rest.GetAsync<T>(string.IsNullOrEmpty(endpointOverride) ? typeof(T).Name : endpointOverride);
             CollectionChanged?.Invoke(this, new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Reset));
         }
 

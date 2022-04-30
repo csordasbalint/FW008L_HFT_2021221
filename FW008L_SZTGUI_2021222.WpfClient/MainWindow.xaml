@@ -86,8 +86,6 @@
                     </ListBox>
 
                     <StackPanel Grid.Column="1">
-                        <!--<Label Content="{Binding Autosw}" />-->
-
                         <Label Content="Title" Foreground="White" Background="DarkBlue" Padding="10" FontSize="15" FontFamily="Arial"/>
                         <TextBox Text="{Binding SelectedBook.Title}" Padding="10" Margin="0,0,0,20" FontSize="15" FontFamily="Arial"/>
 
@@ -181,7 +179,7 @@
 
 
                     <StackPanel Grid.Column="0">
-                        <Label HorizontalContentAlignment="Center" FontSize="14" Content="{Binding Autosw}"  />
+                        
                     </StackPanel>
 
                 </Grid>

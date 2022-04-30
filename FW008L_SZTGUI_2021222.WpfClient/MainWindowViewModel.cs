@@ -15,12 +15,15 @@ namespace FW008L_SZTGUI_2021222.WpfClient
 {
     public class MainWindowViewModel : ObservableRecipient
     {
-        IBookLogic bl;
-        IWriterLogic wl;
-        IPersonLogic pl;
-
-
         //restcollections 
+
+        public IEnumerable<KeyValuePair<string, string>> AutobiographiesByTitle { get; set; }
+        public IEnumerable<KeyValuePair<string, int>> HowManyBooksDoTheyReadUnder18 { get; set; }
+        public IEnumerable<KeyValuePair<string, int>> LatestPublishedBooksByGeorges { get; set; }
+        public IEnumerable<KeyValuePair<string, int>> HungarianReaders { get; set; }
+        public IEnumerable<KeyValuePair<string, int>> Top2ProductiveWriters { get; set; }
+
+
         public RestCollection<Book> Books { get; set; }
         public RestCollection<Writer> Writers { get; set; }
         public RestCollection<Person> People { get; set; }
@@ -28,15 +31,6 @@ namespace FW008L_SZTGUI_2021222.WpfClient
         private Book selectedBook;
         private Writer selectedWriter;
         private Person selectedPerson;
-
-        //public IEnumerable<KeyValuePair<string, int>> Autosw
-        //{
-        //    get
-        //    {
-        //        return (IEnumerable<KeyValuePair<string, int>>)bl.AutobiographiesByTitle();
-        //    }
-        //}
-
 
 
         public Book SelectedBook
@@ -139,6 +133,13 @@ namespace FW008L_SZTGUI_2021222.WpfClient
         {
             if (!IsInDesignMode)
             {
+                //lehet kell valahova /-jel de faszom sem tudja és nincs időm erre
+                AutobiographiesByTitle = new RestCollection<KeyValuePair<string, string>>("http://localhost:48920/", "stat/autobiographiesByTitle","hub");
+                HowManyBooksDoTheyReadUnder18 = new RestCollection<KeyValuePair<string, int>>("http://localhost:48920/", "stat/howManyBooksDoTheyReadUnder18","hub");
+                LatestPublishedBooksByGeorges = new RestCollection<KeyValuePair<string, int>>("http://localhost:48920/", "stat/latestPublishedBooksByGeorges", "hub");
+                HungarianReaders = new RestCollection<KeyValuePair<string, int>>("http://localhost:48920/", "stat/hungarianReaders", "hub");
+                Top2ProductiveWriters = new RestCollection<KeyValuePair<string, int>>("http://localhost:48920/", "stat/top2ProductiveWriters", "hub");
+
                 Books = new RestCollection<Book>("http://localhost:48920/", "book", "hub");
                 Writers = new RestCollection<Writer>("http://localhost:48920/", "writer", "hub");
                 People = new RestCollection<Person>("http://localhost:48920/", "person", "hub");
