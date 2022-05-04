@@ -178,6 +178,11 @@
                         <RowDefinition Height="5*"/>
                         <RowDefinition Height="5*"/>
                         <RowDefinition Height="5*"/>
+                        <RowDefinition Height="5*"/>
+                        <RowDefinition Height="5*"/>
+                        <RowDefinition Height="5*"/>
+                        <RowDefinition Height="5*"/>
+                        <RowDefinition Height="5*"/>
                         <!--<RowDefinition Height="10*"/>
                         <RowDefinition Height="10*"/>
                         <RowDefinition Height="10*"/>
@@ -193,20 +198,10 @@
 
                     <!--<Label Content="The Author's name" Foreground="White" Background="DarkBlue" Padding="10" FontSize="15" FontFamily="Arial" Grid.Column="0" Grid.Row="0"/>
                     <Label Content="Title" Foreground="White" Background="DarkBlue" Padding="10" FontSize="15" FontFamily="Arial" Grid.Column="0" Grid.Row="1"/>-->
-                    <ListBox ItemsSource="{Binding AutobiographiesByTitle}" Grid.Column="0" Grid.Row="0">
-                        <ListBox.ItemTemplate>
-                            <DataTemplate>
-                                <StackPanel Grid.Row="0">
-                                    <TextBlock Text="{Binding Key}"/>
-                                    <TextBlock Text="{Binding Value}"/>
-                                </StackPanel>
-                            </DataTemplate>
-                        </ListBox.ItemTemplate>
-                    </ListBox>
 
-                    <!--<Label Content="Name" Foreground="White" Background="DarkBlue" Padding="10" FontSize="15" FontFamily="Arial" Grid.Column="0" Grid.Row="2"/>
-                    <Label Content="How many books he/she borrowed" Foreground="White" Background="DarkBlue" Padding="10" FontSize="15" FontFamily="Arial" Grid.Column="0" Grid.Row="3"/>-->
-                    <ListBox ItemsSource="{Binding HowManyBooksDoTheyReadUnder18}" Grid.Column="0" Grid.Row="1">
+                    <Label Content="Writers who wrote autobiographies" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
+                           Foreground="White" Background="DarkBlue" Padding="10" FontSize="20" FontFamily="Arial" Grid.Row="0"/>
+                    <ListBox ItemsSource="{Binding AutobiographiesByTitle}" Grid.Column="0" Grid.Row="1">
                         <ListBox.ItemTemplate>
                             <DataTemplate>
                                 <StackPanel Grid.Row="1">
@@ -217,23 +212,11 @@
                         </ListBox.ItemTemplate>
                     </ListBox>
 
-                    <!--<Label Content="Name" Foreground="White" Background="DarkBlue" Padding="10" FontSize="15" FontFamily="Arial" Grid.Column="0" Grid.Row="4"/>
-                    <Label Content="Published" Foreground="White" Background="DarkBlue" Padding="10" FontSize="15" FontFamily="Arial" Grid.Column="0" Grid.Row="5"/>-->
-                    <ListBox ItemsSource="{Binding LatestPublishedBooksByGeorges}" Grid.Column="0" Grid.Row="2">
-                        <ListBox.ItemTemplate>
-                            <DataTemplate>
-                                <StackPanel Grid.Row="2">
-                                    <TextBlock Text="{Binding Key}"/>
-                                    <TextBlock Text="{Binding Value}"/>
-                                </StackPanel>
-                            </DataTemplate>
-                        </ListBox.ItemTemplate>
-                    </ListBox>
-
-
-                    <!--<Label Content="Name" Foreground="White" Background="DarkBlue" Padding="10" FontSize="15" FontFamily="Arial" Grid.Column="0" Grid.Row="6"/>
-                    <Label Content="How many books he/she borrowed" Foreground="White" Background="DarkBlue" Padding="10" FontSize="15" FontFamily="Arial" Grid.Column="0" Grid.Row="7"/>-->
-                    <ListBox ItemsSource="{Binding HungarianReaders}" Grid.Column="0" Grid.Row="3">
+                    <!--<Label Content="Name" Foreground="White" Background="DarkBlue" Padding="10" FontSize="15" FontFamily="Arial" Grid.Column="0" Grid.Row="2"/>
+                    <Label Content="How many books he/she borrowed" Foreground="White" Background="DarkBlue" Padding="10" FontSize="15" FontFamily="Arial" Grid.Column="0" Grid.Row="3"/>-->
+                    <Label Content="Number of books of those readers who are under 18" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
+                           Foreground="White" Background="DarkBlue" Padding="10" FontSize="20" FontFamily="Arial" Grid.Row="2"/>
+                    <ListBox ItemsSource="{Binding HowManyBooksDoTheyReadUnder18}" Grid.Column="0" Grid.Row="3">
                         <ListBox.ItemTemplate>
                             <DataTemplate>
                                 <StackPanel Grid.Row="3">
@@ -244,12 +227,45 @@
                         </ListBox.ItemTemplate>
                     </ListBox>
 
-                    <!--<Label Content="Writer name" Foreground="White" Background="DarkBlue" Padding="10" FontSize="15" FontFamily="Arial" Grid.Column="0" Grid.Row="8"/>
-                    <Label Content="How many books he/she wrote" Foreground="White" Background="DarkBlue" Padding="10" FontSize="15" FontFamily="Arial" Grid.Column="0" Grid.Row="9"/>-->
-                    <ListBox ItemsSource="{Binding Top2ProductiveWriters}" Grid.Column="0" Grid.Row="4">
+                    <!--<Label Content="Name" Foreground="White" Background="DarkBlue" Padding="10" FontSize="15" FontFamily="Arial" Grid.Column="0" Grid.Row="4"/>
+                    <Label Content="Published" Foreground="White" Background="DarkBlue" Padding="10" FontSize="15" FontFamily="Arial" Grid.Column="0" Grid.Row="5"/>-->
+                    <Label Content="Latest book of a writer whose name is George" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
+                           Foreground="White" Background="DarkBlue" Padding="10" FontSize="20" FontFamily="Arial" Grid.Row="4"/>
+                    <ListBox ItemsSource="{Binding LatestPublishedBooksByGeorges}" Grid.Column="0" Grid.Row="5">
                         <ListBox.ItemTemplate>
                             <DataTemplate>
-                                <StackPanel Grid.Row="4">
+                                <StackPanel Grid.Row="5">
+                                    <TextBlock Text="{Binding Key}"/>
+                                    <TextBlock Text="{Binding Value}"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+
+
+                    <!--<Label Content="Name" Foreground="White" Background="DarkBlue" Padding="10" FontSize="15" FontFamily="Arial" Grid.Column="0" Grid.Row="6"/>
+                    <Label Content="How many books he/she borrowed" Foreground="White" Background="DarkBlue" Padding="10" FontSize="15" FontFamily="Arial" Grid.Column="0" Grid.Row="7"/>-->
+                    <Label Content="People who are from Hungary" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
+                           Foreground="White" Background="DarkBlue" Padding="10" FontSize="20" FontFamily="Arial" Grid.Row="6"/>
+                    <ListBox ItemsSource="{Binding HungarianReaders}" Grid.Column="0" Grid.Row="7">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Grid.Row="7">
+                                    <TextBlock Text="{Binding Key}"/>
+                                    <TextBlock Text="{Binding Value}"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+
+                    <!--<Label Content="Writer name" Foreground="White" Background="DarkBlue" Padding="10" FontSize="15" FontFamily="Arial" Grid.Column="0" Grid.Row="8"/>
+                    <Label Content="How many books he/she wrote" Foreground="White" Background="DarkBlue" Padding="10" FontSize="15" FontFamily="Arial" Grid.Column="0" Grid.Row="9"/>-->
+                    <Label Content="The two most productive writers" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
+                           Foreground="White" Background="DarkBlue" Padding="10" FontSize="20" FontFamily="Arial" Grid.Row="8"/>
+                    <ListBox ItemsSource="{Binding Top2ProductiveWriters}" Grid.Column="0" Grid.Row="9">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Grid.Row="9">
                                     <TextBlock Text="{Binding Key}"/>
                                     <TextBlock Text="{Binding Value}"/>
                                 </StackPanel>
