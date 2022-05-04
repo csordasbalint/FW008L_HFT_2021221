@@ -98,6 +98,9 @@
                         <Label Content="Writer id" Foreground="White" Background="DarkBlue" Padding="10" FontSize="15" FontFamily="Arial"/>
                         <TextBox Text="{Binding SelectedBook.Writer_Id}" Padding="10" Margin="0,0,0,20" FontSize="15" FontFamily="Arial"/>
 
+                        <Label Content="Person id" Foreground="White" Background="DarkBlue" Padding="10" FontSize="15" FontFamily="Arial"/>
+                        <TextBox Text="{Binding SelectedBook.Person_Id}" Padding="10" Margin="0,0,0,20" FontSize="15" FontFamily="Arial"/>
+
                         <Button Style="{DynamicResource RoundedButtonStyle}" Content="Create Book" Command="{Binding CreateBookCommand}" Margin="5" Padding="5" Width="140" Height="40" FontSize="15" FontFamily="Arial"/>
                         <Button Style="{DynamicResource RoundedButtonStyle}" Content="Update Book" Command="{Binding UpdateBookCommand}" Margin="5" Padding="5" Width="140" Height="40" FontSize="15" FontFamily="Arial"/>
                         <Button Style="{DynamicResource RoundedButtonStyle}" Content="Delete Book" Command="{Binding DeleteBookCommand}" Margin="5" Padding="5" Width="140" Height="40" FontSize="15" FontFamily="Arial"/>

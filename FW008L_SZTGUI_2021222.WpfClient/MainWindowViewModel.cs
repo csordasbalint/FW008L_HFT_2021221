@@ -151,7 +151,7 @@ namespace FW008L_SZTGUI_2021222.WpfClient
                         Title = SelectedBook.Title,
                         Published = SelectedBook.Published,
                         Genre = SelectedBook.Genre,
-                        Person_Id = null,
+                        Person_Id = SelectedBook.Person_Id,
                         Writer_Id = SelectedBook.Writer_Id
                     });
                 });
