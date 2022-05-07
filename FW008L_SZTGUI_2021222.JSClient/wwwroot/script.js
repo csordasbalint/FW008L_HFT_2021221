@@ -28,7 +28,7 @@ async function autoBiographies_getdata()
 }
 
 function autoBiographies_display() {
-    document.getElementById('').innerHTML = "";  //ide az idézőjelbe kell valami
+    document.getElementById('elso').innerHTML = "";  //ide az idézőjelbe kell valami
     autoBiographies.forEach(t => {
         document.getElementById('').innerHTML += "<tr><td>"
             + t.key + "</td><td>" + t.value + "</td></tr>";
@@ -49,7 +49,7 @@ async function booksOfGeorges_getdata() {
 }
 
 function booksOfGeorges_display() {
-    document.getElementById('').innerHTML = "";  //ide az idézőjelbe kell valami
+    document.getElementById('masodik').innerHTML = "";  //ide az idézőjelbe kell valami
     booksOfGeorges.forEach(t => {
         document.getElementById('').innerHTML += "<tr><td>"
             + t.key + "</td><td>" + t.value + "</td></tr>";
@@ -71,7 +71,7 @@ async function top2ProductiveWriters_getdata()
 }
 
 function top2ProductiveWriters_display() {
-    document.getElementById('').innerHTML = "";  //ide az idézőjelbe kell valami
+    document.getElementById('harmadik').innerHTML = "";  //ide az idézőjelbe kell valami
     top2ProductiveWriters.forEach(t => {
         document.getElementById('').innerHTML += "<tr><td>"
             + t.key + "</td><td>" + t.value + "</td></tr>";
