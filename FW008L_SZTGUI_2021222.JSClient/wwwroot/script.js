@@ -3,6 +3,39 @@ let connection = null;
 getdata();
 setupSignalR();
 
+let autoBiographies = [];
+let booksOfGeorges = [];
+let top2ProductiveWriters = [];
+
+function stat_getdata()
+{
+    autoBiographies_getdata();
+    booksOfGeorges_getdata();
+    top2ProductiveWriters_getdata();
+}
+
+async function autoBiographies_getdata()
+{
+
+    await fetch('http://localhost:48920/stat/autobiographiesByTitle')
+        .then(x => x.json())
+        .then(y => {
+            autoBiographies = y;
+            display()
+        });
+}
+
+function autoBiographies_display()
+{
+    document.getElementById('').innerHTML = "";  //ide az idézőjelbe kell valami
+    autoBiographies.forEach(t => {
+        document.getElementById('').innerHTML += "<tr><td>"
+            + t.key + "</td><td>" + t.value + "</td></tr>";
+    })
+
+}
+
+
 
 function setupSignalR()
 {
@@ -49,14 +82,16 @@ async function start()
 }
 
 
+
+
 async function getdata()
 {
+
     await fetch('http://localhost:48920/book')
         .then(x => x.json())
         .then(y =>
         {
             books = y;
-            //console.log(books); not needed
             display()
         });
 }
@@ -108,35 +143,35 @@ function remove(id)
 }
 
 
-function update()
-{
-    let book_title = document.getElementById('title').value;
-    let book_published = parseInt(document.getElementById('published').value);
-    let book_genre = document.getElementById('genre').value;
-    let book_writer_Id = parseInt(document.getElementById('writer_Id').value);
-    let book_person_Id = parseInt(document.getElementById('person_Id').value);
-    /*id kell vajon?*/
-    fetch('http://localhost:48920/book' + id, /*here / dunno*/
-        {
-            method: 'PUT',
-            headers: { 'Content-Type': 'application/json', },
-            body: JSON.stringify(
-                {
-                    title: book_title,
-                    published: book_published,
-                    genre: book_genre,
-                    writer_Id: book_writer_Id,
-                    person_Id: book_person_Id,
-                    id = book_Id /*this line dunno*/
-                })
-        })
-        .then(response => response)
-        .then(data => {
-            console.log('Success:', data);
-            getdata();
-        })
-        .catch((error) => { console.error('Error:', error); });
-}
+//function update()
+//{
+//    let book_title = document.getElementById('title').value;
+//    let book_published = parseInt(document.getElementById('published').value);
+//    let book_genre = document.getElementById('genre').value;
+//    let book_writer_Id = parseInt(document.getElementById('writer_Id').value);
+//    let book_person_Id = parseInt(document.getElementById('person_Id').value);
+//    id kell vajon?
+//    fetch('http://localhost:48920/book/' + id, here / dunno
+//        {
+//            method: 'PUT',
+//            headers: { 'Content-Type': 'application/json', },
+//            body: JSON.stringify(
+//                {
+//                    title: book_title,
+//                    published: book_published,
+//                    genre: book_genre,
+//                    writer_Id: book_writer_Id,
+//                    person_Id: book_person_Id,
+//                    id = book_Id /*this line dunno*/
+//                })
+//        })
+//        .then(response => response)
+//        .then(data => {
+//            console.log('Success:', data);
+//            getdata();
+//        })
+//        .catch((error) => { console.error('Error:', error); });
+//}
 
 
 function create()
