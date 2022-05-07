@@ -14,21 +14,65 @@ function stat_getdata()
     top2ProductiveWriters_getdata();
 }
 
+
+
 async function autoBiographies_getdata()
 {
 
-    await fetch('http://localhost:48920/stat/autobiographiesByTitle')
+    await fetch('http://localhost:48920/stat/autobiographiesbytitle')
         .then(x => x.json())
         .then(y => {
             autoBiographies = y;
-            display()
+            autoBiographies_display();
         });
 }
 
-function autoBiographies_display()
-{
+function autoBiographies_display() {
     document.getElementById('').innerHTML = "";  //ide az idézőjelbe kell valami
     autoBiographies.forEach(t => {
+        document.getElementById('').innerHTML += "<tr><td>"
+            + t.key + "</td><td>" + t.value + "</td></tr>";
+    })
+
+}
+
+
+
+async function booksOfGeorges_getdata() {
+
+    await fetch('http://localhost:48920/stat/latestpublishedbooksbygeorges')
+        .then(x => x.json())
+        .then(y => {
+            booksOfGeorges = y;
+            booksOfGeorges_display();
+        });
+}
+
+function booksOfGeorges_display() {
+    document.getElementById('').innerHTML = "";  //ide az idézőjelbe kell valami
+    booksOfGeorges.forEach(t => {
+        document.getElementById('').innerHTML += "<tr><td>"
+            + t.key + "</td><td>" + t.value + "</td></tr>";
+    })
+
+}
+
+
+
+async function top2ProductiveWriters_getdata()
+{
+
+    await fetch('http://localhost:48920/stat/top2productivewriters')
+        .then(x => x.json())
+        .then(y => {
+            top2ProductiveWriters = y;
+            top2ProductiveWriters_display();
+        });
+}
+
+function top2ProductiveWriters_display() {
+    document.getElementById('').innerHTML = "";  //ide az idézőjelbe kell valami
+    top2ProductiveWriters.forEach(t => {
         document.getElementById('').innerHTML += "<tr><td>"
             + t.key + "</td><td>" + t.value + "</td></tr>";
     })
@@ -66,7 +110,6 @@ function setupSignalR()
     start();
 }
 
-
 async function start()
 {
     try
@@ -81,9 +124,6 @@ async function start()
     }
 }
 
-
-
-
 async function getdata()
 {
 
@@ -95,7 +135,6 @@ async function getdata()
             display()
         });
 }
-
 
 function display()
 {
@@ -118,11 +157,6 @@ function display()
     });
 }
 
-
-function displayForNonCruds()
-{
-    
-}
 
 
 function remove(id)
