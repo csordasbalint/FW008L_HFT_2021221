@@ -35,32 +35,63 @@
         </table>
     </div>
 
+    <br>
+
+    <div id="updateformdiv">
+        <br>
         <table>
-            <thead>
-                <tr>
-                    <th>Book ID</th>
-                    <th>Title</th>
-                    <th>Published</th>
-                    <th>Genre</th>
-                    <th>Writer ID</th>
-                    <th>Person ID</th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
-            <tbody id="results"></tbody>
+            <tr>
+                <td><label>Title</label></td>
+                <td><input type="text" id="titleToUpdate" /></td>
+            </tr>
+            <tr>
+                <td><label>Published</label></td>
+                <td><input type="number" id="publishedToUpdate" /></td>
+            </tr>
+            <tr>
+                <td><label>Genre</label></td>
+                <td><input type="text" id="genreToUpdate" /></td>
+            </tr>
+            <tr>
+                <td><label>Writer_Id</label></td>
+                <td><input type="number" id="writer_IdToUpdate" /><br></td>
+            </tr>
+            <tr>
+                <td><label>Person_Id</label></td>
+                <td><input type="number" id="person_IdToUpdate" /></td>
+            </tr>
+            <tr>
+                <td><button type="button" onclick="update()">Update Book</button></td>
+            </tr>
         </table>
+        <br>
+    </div>
 
-    <div id="elso">
+    <table>
+        <thead>
+            <tr>
+                <th>Book ID</th>
+                <th>Title</th>
+                <th>Published</th>
+                <th>Genre</th>
+                <th>Writer ID</th>
+                <th>Person ID</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody id="results"></tbody>
+    </table>
+
+    <!--<div id="elso">
         <table>
-
         </table>
 
     </div>
     <div id="masodik"></div>
-    <div id="harmadik"></div>
+    <div id="harmadik"></div>-->
 
 
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/6.0.1/signalr.js"></script>
-        <script src="script.js"></script>
-    </body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/6.0.1/signalr.js"></script>
+    <script src="script.js"></script>
+</body>
     </html>

@@ -15,7 +15,6 @@ function stat_getdata()
 }
 
 
-
 async function autoBiographies_getdata()
 {
 
@@ -139,41 +138,21 @@ async function getdata()
 function display()
 {
     document.getElementById('results').innerHTML = "";
-    books.forEach(t =>
-    {
-        //document.getElementById('results').innerHTML +=
-        //    "<tr><td>" + t.book_Id + "</td><td>" + t.title +
-        //    "</td><td>" + t.published + "</td><td>" + t.genre +
-        //    "</td><td>" + t.writer_Id + "</td><td>" + t.person_Id +
-        //    "</td> <td>" + `<button tpye="button" onclick="remove(${t.book_Id})">Delete </button>` + "</td> </tr>";
-
-
+    books.forEach(t => {
         document.getElementById('results').innerHTML +=
             "<tr><td>" + t.book_Id + "</td><td>" + t.title +
             "</td><td>" + t.published + "</td><td>" + t.genre +
-            "</td><td>" + t.writer_Id + "</td><td>" + t.person_Id +
-            "</td> <td>" + `<button tpye="button" onclick="remove(${t.book_Id})">Delete </button>` +
-            "</td> <td>"+ `<button tpye="button" onclick="update(${t.book_Id})">Update </button>` + "</td> </tr>";
+            "</td><td>" + t.writer_Id + "</td><td>" + t.person_Id + "</td><td>" +
+            `<button tpye="button" onclick="remove(${t.book_Id})">Delete </button>` + "</td><td>" +
+            `<button tpye="button" onclick="showupdate(${t.book_Id})">Update </button>` +
+            "</td></tr>";
     });
 }
 
-
-
-function remove(id)
+function showupdate(id)
 {
-    fetch('http://localhost:48920/book/' + id,
-        {
-            method: 'DELETE',
-            headers: { 'Content-Type': 'application/json', },
-            body: null
-        })
-        .then(response => response)
-        .then(data =>
-        {
-            console.log('Success:', data);
-            getdata();
-        })
-        .catch((error) => { console.error('Error:', error); });
+    alert(id);
+
 }
 
 
@@ -207,6 +186,20 @@ function remove(id)
 //        .catch((error) => { console.error('Error:', error); });
 //}
 
+function remove(id) {
+    fetch('http://localhost:48920/book/' + id,
+        {
+            method: 'DELETE',
+            headers: { 'Content-Type': 'application/json', },
+            body: null
+        })
+        .then(response => response)
+        .then(data => {
+            console.log('Success:', data);
+            getdata();
+        })
+        .catch((error) => { console.error('Error:', error); });
+}
 
 function create()
 {
