@@ -44,18 +44,18 @@ th
 {
     display: none;
     flex-direction: column;
+    margin-bottom: 20px;
 }
 
-#updateformdiv
+/*#updateformdiv
 {
     width: 20%;
     text-align: left;
-}
+}*/
 
 #updateformdiv label, button, input
 {
-    margin: 1px;
-    padding: 1px;
-
+    margin: 3px;
+    padding: 3px;
 }
 

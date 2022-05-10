@@ -3,6 +3,8 @@ let connection = null;
 getdata();
 setupSignalR();
 
+let bookIdToUpdateSCRIPT = -1;
+
 let autoBiographies = [];
 let booksOfGeorges = [];
 let top2ProductiveWriters = [];
@@ -143,8 +145,8 @@ function display()
             "<tr><td>" + t.book_Id + "</td><td>" + t.title +
             "</td><td>" + t.published + "</td><td>" + t.genre +
             "</td><td>" + t.writer_Id + "</td><td>" + t.person_Id + "</td><td>" +
-            `<button tpye="button" onclick="remove(${t.book_Id})">Delete </button>` + "</td><td>" +
-            `<button tpye="button" onclick="showupdate(${t.book_Id})">Update </button>` +
+            `<button tpye="button" onclick="remove(${t.book_Id})">Delete</button>` +
+            `<button tpye="button" onclick="showupdate(${t.book_Id})">Update</button>` +
             "</td></tr>";
     });
 }
@@ -152,7 +154,41 @@ function display()
 function showupdate(id)
 {
     alert(id);
+    document.getElementById('titleToUpdate').value = books.find(t => t['book_Id'] == id)['title'];
+    document.getElementById('updateformdiv').style.display = 'flex';
+    bookIdToUpdateSCRIPT = id;
 
+}
+
+function update()
+{
+    document.getElementById('updateformdiv').style.display = 'none';
+    let book_title = document.getElementById('titleToUpdate').value;
+    let book_published = parseInt(document.getElementById('publishedToUpdate').value);
+    let book_genre = document.getElementById('genreToUpdate').value;
+    let book_writer_Id = parseInt(document.getElementById('writer_IdToUpdate').value);
+    let book_person_Id = parseInt(document.getElementById('person_IdToUpdate').value);
+
+    fetch('http://localhost:48920/book',
+        {
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json', },
+            body: JSON.stringify(
+                {
+                    book_Id: bookIdToUpdateSCRIPT,
+                    title: book_title,
+                    published: book_published,
+                    genre: book_genre,
+                    writer_Id: book_writer_Id,
+                    person_Id: book_person_Id
+                })
+        })
+        .then(response => response)
+        .then(data => {
+            console.log('Success:', data);
+            getdata();
+        })
+        .catch((error) => { console.error('Error:', error); });
 }
 
 
