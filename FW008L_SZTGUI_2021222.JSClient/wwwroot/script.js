@@ -81,7 +81,6 @@ function top2ProductiveWriters_display() {
 }
 
 
-
 function setupSignalR()
 {
     const connection = new signalR.HubConnectionBuilder()
@@ -121,7 +120,7 @@ async function start()
     catch (err)
     {
         console.log(err);
-        setTimeout(start, 5000);
+        setTimeout(start, 2000);
     }
 }
 
@@ -146,23 +145,16 @@ function display()
             "</td><td>" + t.published + "</td><td>" + t.genre +
             "</td><td>" + t.writer_Id + "</td><td>" + t.person_Id + "</td><td>" +
             `<button tpye="button" onclick="remove(${t.book_Id})">Delete</button>` +
-            `<button tpye="button" onclick="showupdate(${t.book_Id})">Update</button>` +
+            `<button tpye="button" onclick="update(${t.book_Id})">Update</button>` +
             "</td></tr>";
     });
 }
 
-function showupdate(id)
+
+
+function update(id)
 {
     alert(id);
-    document.getElementById('titleToUpdate').value = books.find(t => t['book_Id'] == id)['title'];
-    document.getElementById('updateformdiv').style.display = 'flex';
-    bookIdToUpdateSCRIPT = id;
-
-}
-
-function update()
-{
-    document.getElementById('updateformdiv').style.display = 'none';
     let book_title = document.getElementById('titleToUpdate').value;
     let book_published = parseInt(document.getElementById('publishedToUpdate').value);
     let book_genre = document.getElementById('genreToUpdate').value;
@@ -245,9 +237,9 @@ function create()
     let book_writer_Id = parseInt(document.getElementById('writer_Id').value);
     let book_person_Id = parseInt(document.getElementById('person_Id').value);
 
-    fetch('http://localhost:48920/book', /*dunno if i need a / at the end*/
+    fetch('http://localhost:48920/book',
         {
-            method: 'POST', /*method must be post*/
+            method: 'POST',
             headers: { 'Content-Type': 'application/json', },
             body: JSON.stringify(
                 {
