@@ -120,13 +120,12 @@ async function start()
     catch (err)
     {
         console.log(err);
-        setTimeout(start, 2000);
+        setTimeout(start, 5000);
     }
 }
 
 async function getdata()
 {
-
     await fetch('http://localhost:48920/book')
         .then(x => x.json())
         .then(y =>
@@ -135,6 +134,7 @@ async function getdata()
             display()
         });
 }
+
 
 function display()
 {
@@ -145,16 +145,26 @@ function display()
             "</td><td>" + t.published + "</td><td>" + t.genre +
             "</td><td>" + t.writer_Id + "</td><td>" + t.person_Id + "</td><td>" +
             `<button tpye="button" onclick="remove(${t.book_Id})">Delete</button>` +
-            `<button tpye="button" onclick="update(${t.book_Id})">Update</button>` +
+            `<button tpye="button" onclick="showupdate(${t.book_Id})">Update</button>` +
             "</td></tr>";
     });
 }
 
-
-
-function update(id)
+function showupdate(id)
 {
-    alert(id);
+    document.getElementById('updatediv').style.display = 'flex';
+
+    document.getElementById('titleToUpdate').value = books.find(t => t['book_Id'] == id)['title'];
+    document.getElementById('publishedToUpdate').value = books.find(t => t['book_Id'] == id)['published'];
+    document.getElementById('genreToUpdate').value = books.find(t => t['book_Id'] == id)['genre'];
+    document.getElementById('writer_IdToUpdate').value = books.find(t => t['book_Id'] == id)['writer_Id'];
+    document.getElementById('person_IdToUpdate').value = books.find(t => t['book_Id'] == id)['person_Id'];
+
+    bookIdToUpdateSCRIPT = id;
+}
+
+function update()
+{
     let book_title = document.getElementById('titleToUpdate').value;
     let book_published = parseInt(document.getElementById('publishedToUpdate').value);
     let book_genre = document.getElementById('genreToUpdate').value;
@@ -183,38 +193,8 @@ function update(id)
         .catch((error) => { console.error('Error:', error); });
 }
 
-
-//function update()
-//{
-//    let book_title = document.getElementById('title').value;
-//    let book_published = parseInt(document.getElementById('published').value);
-//    let book_genre = document.getElementById('genre').value;
-//    let book_writer_Id = parseInt(document.getElementById('writer_Id').value);
-//    let book_person_Id = parseInt(document.getElementById('person_Id').value);
-//    id kell vajon?
-//    fetch('http://localhost:48920/book/' + id, here / dunno
-//        {
-//            method: 'PUT',
-//            headers: { 'Content-Type': 'application/json', },
-//            body: JSON.stringify(
-//                {
-//                    title: book_title,
-//                    published: book_published,
-//                    genre: book_genre,
-//                    writer_Id: book_writer_Id,
-//                    person_Id: book_person_Id,
-//                    id = book_Id /*this line dunno*/
-//                })
-//        })
-//        .then(response => response)
-//        .then(data => {
-//            console.log('Success:', data);
-//            getdata();
-//        })
-//        .catch((error) => { console.error('Error:', error); });
-//}
-
-function remove(id) {
+function remove(id)
+{
     fetch('http://localhost:48920/book/' + id,
         {
             method: 'DELETE',

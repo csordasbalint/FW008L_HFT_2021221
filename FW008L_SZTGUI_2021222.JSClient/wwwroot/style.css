@@ -22,7 +22,7 @@ th
 
 #updatediv
 {
-    display: flex;
+    display: none;
     flex-direction: column;
     width: 20%;
     text-align: left;
