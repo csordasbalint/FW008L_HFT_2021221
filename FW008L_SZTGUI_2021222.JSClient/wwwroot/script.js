@@ -1,81 +1,81 @@
 ﻿let books = [];
 let connection = null;
 let bookIdToUpdateSCRIPT = -1;
+let autoBiographies = [];
+let booksOfGeorges = [];
+let top2ProductiveWriters = [];
+
 getdata();
 setupSignalR();
+stat_getdata();
 
 
-//let autoBiographies = [];
-//let booksOfGeorges = [];
-//let top2ProductiveWriters = [];
+function stat_getdata()
+{
+    autoBiographies_getdata();
+    booksOfGeorges_getdata();
+    top2ProductiveWriters_getdata();
+}
 
-//function stat_getdata()
-//{
-//    autoBiographies_getdata();
-//    booksOfGeorges_getdata();
-//    top2ProductiveWriters_getdata();
-//}
+async function autoBiographies_getdata()
+{
 
-//async function autoBiographies_getdata()
-//{
+    await fetch('http://localhost:48920/stat/autobiographiesbytitle')
+        .then(x => x.json())
+        .then(y => {
+            autoBiographies = y;
+            autoBiographies_display();
+        });
+}
 
-//    await fetch('http://localhost:48920/stat/autobiographiesbytitle')
-//        .then(x => x.json())
-//        .then(y => {
-//            autoBiographies = y;
-//            autoBiographies_display();
-//        });
-//}
-
-//function autoBiographies_display() {
-//    document.getElementById('elso').innerHTML = "";  //ide az idézőjelbe kell valami
-//    autoBiographies.forEach(t => {
-//        document.getElementById('').innerHTML += "<tr><td>"
-//            + t.key + "</td><td>" + t.value + "</td></tr>";
-//    })
-
-//}
+function autoBiographies_display()
+{
+    document.getElementById('firstNON').innerHTML = "";
+    autoBiographies.forEach(t => {
+        document.getElementById('firstNON').innerHTML += "<tr><td>"
+            + t.key + "</td><td>" + t.value + "</td></tr>";
+    })
+}
 
 
-//async function booksOfGeorges_getdata() {
+async function booksOfGeorges_getdata() {
 
-//    await fetch('http://localhost:48920/stat/latestpublishedbooksbygeorges')
-//        .then(x => x.json())
-//        .then(y => {
-//            booksOfGeorges = y;
-//            booksOfGeorges_display();
-//        });
-//}
+    await fetch('http://localhost:48920/stat/latestpublishedbooksbygeorges')
+        .then(x => x.json())
+        .then(y => {
+            booksOfGeorges = y;
+            booksOfGeorges_display();
+        });
+}
 
-//function booksOfGeorges_display() {
-//    document.getElementById('masodik').innerHTML = "";  //ide az idézőjelbe kell valami
-//    booksOfGeorges.forEach(t => {
-//        document.getElementById('').innerHTML += "<tr><td>"
-//            + t.key + "</td><td>" + t.value + "</td></tr>";
-//    })
+function booksOfGeorges_display()
+{
+    document.getElementById('secondNON').innerHTML = "";
+    booksOfGeorges.forEach(t => {
+        document.getElementById('secondNON').innerHTML += "<tr><td>"
+            + t.key + "</td><td>" + t.value + "</td></tr>";
+    })
+}
 
-//}
 
+async function top2ProductiveWriters_getdata()
+{
 
-//async function top2ProductiveWriters_getdata()
-//{
+    await fetch('http://localhost:48920/stat/top2productivewriters')
+        .then(x => x.json())
+        .then(y => {
+            top2ProductiveWriters = y;
+            top2ProductiveWriters_display();
+        });
+}
 
-//    await fetch('http://localhost:48920/stat/top2productivewriters')
-//        .then(x => x.json())
-//        .then(y => {
-//            top2ProductiveWriters = y;
-//            top2ProductiveWriters_display();
-//        });
-//}
-
-//function top2ProductiveWriters_display() {
-//    document.getElementById('harmadik').innerHTML = "";  //ide az idézőjelbe kell valami
-//    top2ProductiveWriters.forEach(t => {
-//        document.getElementById('').innerHTML += "<tr><td>"
-//            + t.key + "</td><td>" + t.value + "</td></tr>";
-//    })
-
-//}
+function top2ProductiveWriters_display() {
+    document.getElementById('thirdNON').innerHTML = "";
+    top2ProductiveWriters.forEach(t => {
+        document.getElementById('thirdNON').innerHTML += "<tr><td>"
+            + t.key + "</td><td>" + t.value + "</td></tr>";
+    })
+}
 
 
 function setupSignalR()
