@@ -85,19 +85,21 @@ function setupSignalR()
         .configureLogging(signalR.LogLevel.Information)
         .build();
 
-    connection.on("BookCreated", (user, message) =>
-    {
+    connection.on("BookCreated", (user, message) => {
         getdata();
+        stat_getdata();
     });
 
     connection.on("BookDeleted", (user, message) =>
     {
         getdata();
+        stat_getdata();
     });
 
     connection.on("BookUpdated", (user, message) =>
     {
         getdata();
+        stat_getdata();
     });
 
     connection.onclose(async () =>
